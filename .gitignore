@@ -1,0 +1,29 @@
+# --- Python & Ambientes ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# --- Kaggle Especifico ---
+.kaggle/
+kaggle.json
+
+# --- Jupyter & Notebooks ---
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# --- Gestão de Dados ---
+data/raw/
+data/processed/
+
+# Manter estrutura de pastas
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# --- Sistema & IDEs ---
+.DS_Store
+.vscode/
+.idea/
+*.log
