@@ -4,7 +4,7 @@
 * **Grupo nº:** 11
 * **Membros:**
  * **Rodrigo Pedro** - [a2023129724]
- * **Tiago Rodrigues** - **[Nº de Estudante]**
+ * **Tiago Rodrigues** - [a2022138676]
 
 ## Organização do Repositório
 A estrutura deste projeto segue as boas práticas de Ciência de Dados e Engenharia de Software:
