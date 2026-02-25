@@ -16,9 +16,9 @@ O problema é relevante para a unidade curricular de Projeto de Ciência de Dado
 
 ## 3. Metodologia de Gestão (PBL)
 * **Divisão de Tarefas:**
-  * **Tiago Rodrigues:** Responsável pela **Engenharia de Dados e Preparação** (carregamento dos ficheiros CSV/XLSX, limpeza inicial, tratamento dos valores `-200`, transformação de `Date` + `Time` para timestamp e preparação do dataset para EDA/modelação).
-  * **Rodrigo Pedro:** Responsável pela **Análise Exploratória, Modelação e Documentação** (estatística descritiva, visualizações, análise de correlações, construção e avaliação de modelos de regressão, atualização do `README.md` e do `docs/M1_iniciacao.md`).
-  * **Trabalho partilhado (ambos):** Definição dos objetivos SMART, perguntas de investigação, interpretação de resultados, revisão final da documentação e apresentação do projeto.
+  * **Rodrigo Pedro:** Responsável pela **Engenharia de Dados e Preparação** (carregamento dos ficheiros CSV/XLSX, limpeza inicial, tratamento dos valores `-200`, transformação de `Date` + `Time` para timestamp e preparação do dataset para EDA/modelação).
+  * **Tiago Rodrigues:** Responsável pela **Análise Exploratória, Modelação e Documentação** (estatística descritiva, visualizações, análise de correlações, construção e avaliação de modelos de regressão, atualização do `README.md` e do `docs/M1_iniciacao.md`).
+  * **Trabalho de ambos:** Definição dos objetivos SMART, perguntas de investigação, interpretação de resultados, revisão final da documentação e apresentação do projeto.
 * **Ferramentas de Colaboração:** **GitHub** (repositório e controlo de versões), **GitHub Projects/Issues** (gestão de tarefas/Kanban), **Kaggle Notebooks** (exploração inicial), **Python + Jupyter** (análise/modelação), **Discord/WhatsApp** (comunicação e reuniões).
 
 ## 4. Análise de Viabilidade dos Dados
