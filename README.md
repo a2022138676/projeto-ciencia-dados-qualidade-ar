@@ -1,95 +1,77 @@
-# projeto-ciencia-dados-qualidade-ar
 # Projeto de Ciência de Dados — Qualidade do Ar (AirQualityUCI)
 
 ## Identificação da Equipa
-* **Grupo nº:** [11]
+* **Grupo nº:** 11
 * **Membros:**
-  * **Tiago Rodrigues** - [a2022138676]
-  * **Rodrigo Pedro** - [a2023129724]
+ * **Rodrigo Pedro** - [Nº de Estudante]
+ * **Tiago Rodrigues** - [Nº de Estudante]
 
----
-## Organização do Portfólio de Resultados
+## Organização do Repositório
+A estrutura deste projeto segue as boas práticas de Ciência de Dados e Engenharia de Software:
+* **`data/`**: Armazenamento de dados (dados brutos em `raw/` e processados em `processed/`).
+* **`docs/`**: Documentação técnica detalhada dividida por Milestones (M1, M2, M3 e M4).
+* **`notebooks/`**: Jupyter Notebooks para experimentação, limpeza e modelação.
+* **`src/`**: Código-fonte modular (scripts `.py`) para funções reutilizáveis.
+* **`reports/`**: Relatórios finais, apresentações e exportação de figuras (`figures/`). *(pasta prevista para fases posteriores)*
+* **`requirements.txt`**: Ficheiro de configuração com as bibliotecas necessárias. *(a criar/atualizar ao longo do projeto)*
 
-Este repositório funciona como uma **Wiki de Projeto**, documentando as decisões, entregáveis e resultados obtidos ao longo das milestones, sem exposição de dados sensíveis ou código proprietário.
-
-* **`milestones/`**: Documentação técnica detalhada de cada etapa do projeto (M1, M2, M3 e M4).
-* **`assets/`**: Repositório de evidências visuais, dividido em `graficos/`, `diagramas/` e `tabelas/`.
-* **`.gitignore`**: Filtro de segurança que impede a submissão acidental de dados brutos, ficheiros temporários ou scripts não destinados ao repositório público.
-
-> **Nota:** Durante a Milestone 1, a estrutura poderá estar em fase inicial e algumas pastas/ficheiros poderão ser adicionados progressivamente.
-
----
 ## 1. Iniciação (Milestone 1)
 
 ### Contexto e Problema de Negócio
-O projeto centra-se na **monitorização da qualidade do ar**, um tema com elevada relevância na **saúde pública**, **gestão ambiental** e **planeamento urbano**. A poluição atmosférica afeta diretamente a qualidade de vida da população e pode apoiar decisões relacionadas com prevenção, monitorização e políticas ambientais.
+Este projeto centra-se na **monitorização da qualidade do ar**, um tema relevante nas áreas da **saúde pública**, **gestão ambiental** e **cidades inteligentes**. A poluição atmosférica tem impacto direto no bem-estar da população e na definição de políticas públicas, tornando a análise destes dados particularmente importante no contexto atual.
 
-O dataset selecionado (**AirQualityUCI**) contém medições horárias de poluentes (ex.: `CO(GT)`, `NOx(GT)`, `NO2(GT)`), leituras de sensores químicos (`PT08.*`) e variáveis meteorológicas (`T`, `RH`, `AH`). Este conjunto de dados permite estudar padrões temporais, relações entre variáveis e, em fases posteriores, desenvolver modelos de regressão para previsão de variáveis-alvo de qualidade do ar.
+O dataset selecionado, **AirQualityUCI**, contém medições horárias de poluentes atmosféricos (como CO, NOx e NO2), leituras de sensores químicos e variáveis meteorológicas (temperatura, humidade relativa e humidade absoluta). Este conjunto de dados permite analisar padrões temporais e relações entre variáveis, bem como desenvolver modelos preditivos em fases posteriores do projeto.
+
+O desafio do projeto é preparar, explorar e modelar estes dados de forma reprodutível, produzindo conhecimento útil sobre padrões de poluição e capacidade preditiva de variáveis ambientais.
 
 ### Objetivos do Projeto
-* **Objetivo 1:** Construir um pipeline de preparação de dados reprodutível (tratamento de `Date` + `Time`, remoção de colunas/linhas vazias e substituição de `-200` por `NaN`).
-* **Objetivo 2:** Realizar análise exploratória (EDA) e identificar padrões horários/diários, correlações entre sensores/poluentes e relações com variáveis meteorológicas.
+* **Objetivo 1:** Construir um pipeline de preparação de dados reprodutível (conversão de `Date` + `Time` para `timestamp`, remoção de colunas/linhas vazias e substituição de `-200` por `NaN`).
+* **Objetivo 2:** Realizar análise exploratória (EDA) e identificar padrões horários/diários, correlações entre sensores e poluentes, e relações com variáveis meteorológicas.
 * **Objetivo 3:** Desenvolver e comparar modelos de regressão para prever uma variável-alvo de qualidade do ar (ex.: `CO(GT)` ou `NO2(GT)`).
 
-**[Consulta a Documentação Completa do Milestone 1](milestones/M1_iniciacao.md)**
+### Fonte de Dados
+* **Dataset:** AirQualityUCI (Kaggle / ficheiros `AirQualityUCI.csv` e `AirQualityUCI.xlsx`)
+* **Dimensão:** **9357 linhas, 15 colunas úteis** (após limpeza estrutural do ficheiro CSV)
 
----
 ## 2. Exploração (Milestone 2)
 
+### Limpeza e Preparação
+* Leitura do ficheiro CSV com parsing específico (`sep=';'`, `decimal=','`).
+* Remoção de colunas totalmente vazias e linhas vazias no final do ficheiro.
+* Identificação do valor **`-200`** como código de valores em falta e conversão para `NaN`.
+* Criação da coluna temporal `timestamp` a partir de `Date` + `Time`.
+* Verificação inicial de integridade temporal (ordenação, duplicados e intervalos horários).  
+* [Breve resumo das ações de limpeza tomadas. Detalhes em `docs/M2_exploracao.md`]
+
 ### Principais Conclusões (EDA)
-> *Dica: Insere aqui o gráfico mais importante do projeto que resume a tua descoberta principal.*  
-> ![Gráfico de Destaque](assets/graficos/insight_principal.png)
+> *Dica: Insere aqui o gráfico mais importante do projeto.*
 
-* **Conclusão Chave (prevista):** Espera-se identificar padrões temporais nas concentrações de poluentes (por hora/dia), bem como relações relevantes entre variáveis meteorológicas e leituras dos sensores.
-* **Qualidade dos dados (prevista):** Será documentado o impacto dos valores inválidos (`-200`) e a estratégia de tratamento adotada.
-* **Resultado esperado:** EDA com visualizações e conclusões técnicas que suportem a fase de modelação.
+* **Ponto-chave:** Foi identificado que o valor **`-200`** representa valores em falta, sendo necessário tratamento prévio antes da modelação.
+* **Ponto-chave:** A variável `NMHC(GT)` apresenta uma percentagem muito elevada de valores em falta (~90%), podendo exigir exclusão ou tratamento específico.
+* **Ponto-chave:** O dataset apresenta estrutura temporal horária adequada para análise temporal e modelação por regressão.
 
-**[Consulta a Documentação Completa do Milestone 2](milestones/M2_exploracao.md)**
-
----
 ## 3. Modelação (Milestone 3)
 
-### Desempenho do Modelo
-| Modelo | Métrica (RMSE) | Tempo de Treino |
-| :--- | :--- | :--- |
-| Baseline (média histórica) | [a preencher] | [a preencher] |
-| Regressão Linear | [a preencher] | [a preencher] |
-| Random Forest Regressor | [a preencher] | [a preencher] |
-| **Modelo Final** | **[a preencher]** | **[a preencher]** |
+### Abordagem Técnica
+* **Modelos:** Baseline (média histórica), Regressão Linear, Random Forest Regressor (e/ou outro modelo de regressão a comparar)
+* **Métrica Principal:** **RMSE** (com avaliação complementar por **MAE** e **R²**)
 
-* **Nota:** O modelo final será selecionado com base no desempenho em métricas de regressão (**MAE, RMSE e R²**) e no equilíbrio entre precisão, robustez e capacidade de generalização.
-
-**[Consulta a Documentação Completa do Milestone 3](milestones/M3_modelacao.md)**
-
----
 ## 4. Finalização (Milestone 4)
 
 ### Resposta ao Problema
-Os resultados finais irão responder à questão inicial da Milestone 1, demonstrando de que forma a análise exploratória e os modelos desenvolvidos permitem compreender e prever variáveis de qualidade do ar no dataset **AirQualityUCI**.
+[Resumo da solução e de como os resultados obtidos ajudam a compreender e prever variáveis de qualidade do ar, com potencial apoio à monitorização ambiental e à tomada de decisão.]
 
-O impacto prático da solução será discutido em termos de:
-- apoio à monitorização ambiental;
-- identificação de padrões relevantes de poluição;
-- potencial de utilização em contextos académicos e de prototipagem de sistemas de apoio à decisão.
+### Recomendações de Inovação
+1. [Implementar um dashboard para visualização contínua de padrões e previsões de qualidade do ar.]
+2. [Explorar validação temporal mais robusta e modelos adicionais para séries temporais.]
+3. [Avaliar estratégias de imputação e seleção de variáveis para melhorar desempenho e interpretabilidade.]
 
-### Recomendações e Inovação
-1. Propor melhorias no pipeline de preparação de dados (ex.: estratégias de imputação e seleção de variáveis).
-2. Explorar modelos adicionais e validação temporal mais rigorosa para séries temporais.
-3. Criar visualizações interativas ou dashboard para acompanhamento dos resultados.
-4. Avaliar a possibilidade de automatizar alertas com base em previsões futuras (trabalho futuro).
+## Como Reproduzir este Projeto
+1. Clone o repositório: `git clone [url-do-repo]`
+2. Instale as dependências: `pip install -r requirements.txt`
+3. Execute os notebooks na pasta `notebooks/` seguindo a ordem numérica.
 
-**[Consulta a Documentação Completa do Milestone 4](milestones/M4_finalizacao.md)**
-
----
-**Instituição:** Coimbra Business School | ISCAC  
-**Curso:** Licenciatura em Ciência de Dados para a Gestão  
-**Unidade Curricular:** Projeto em Ciência de Dados  
+**Instituição:** Coimbra Business School | ISCAC
+**Curso:** Licenciatura em Ciência de Dados para a Gestão
+**Unidade Curricular:** Projeto em Ciência de Dados
 **Professor Responsável:** Dora Melo (dmelo@iscac.pt)
-
-## Nota de Confidencialidade
-Este repositório foi construído exclusivamente para fins de **portfólio e documentação de
-resultados**. Por questões de proteção de dados e propriedade intelectual, este repositório **não
-contém**:
-1. Dados brutos (datasets originais).
-2. Código-fonte proprietário da implementação.
-3. Informação sensível de clientes ou parceiros. 
