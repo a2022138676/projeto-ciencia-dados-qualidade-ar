@@ -3,7 +3,7 @@
 ## Identificação da Equipa
 * **Grupo nº:** 11
 * **Membros:**
- * **Rodrigo Pedro** - **[Nº de Estudante]**
+ * **Rodrigo Pedro** - [a2023129724]
  * **Tiago Rodrigues** - **[Nº de Estudante]**
 
 ## Organização do Repositório
