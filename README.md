@@ -5,7 +5,7 @@
 * **Grupo nº:** [11]
 * **Membros:**
   * **Tiago Rodrigues** - [a2022138676]
-  * **Rodrigo Pedro** - [a2023]
+  * **Rodrigo Pedro** - [a2023129724]
 
 ---
 ## Organização do Portfólio de Resultados
