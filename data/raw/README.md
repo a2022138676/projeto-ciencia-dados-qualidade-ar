@@ -9,7 +9,7 @@ Esta pasta contém os dados originais do projeto.
 Dataset: **Air Quality Dataset (UCI)**
 
 Origem:
-Kaggle → Kaggle → https://www.kaggle.com/datasets/uciml/air-quality-dataset
+Kaggle → [Kaggle → https://www.kaggle.com/datasets/uciml/air-quality-dataset](https://www.kaggle.com/datasets/rodrigopedro20/air-quality)
 
 ## Descrição
 
