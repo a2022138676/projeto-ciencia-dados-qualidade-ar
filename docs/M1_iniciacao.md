@@ -5,14 +5,41 @@ Este projeto centra-se na **monitorização da qualidade do ar**, um tema releva
 
 O dataset selecionado, **AirQualityUCI**, contém medições horárias de poluentes atmosféricos (como CO, NOx e NO2), leituras de sensores químicos e variáveis meteorológicas (temperatura, humidade relativa e humidade absoluta). Este conjunto de dados permite analisar padrões temporais e relações entre variáveis, bem como desenvolver modelos preditivos em fases posteriores do projeto.
 
-O problema é relevante para a unidade curricular de Projeto de Ciência de Dados porque permite aplicar a metodologia **CRISP-DM** de forma completa, começando pela compreensão do problema e dos dados, passando pela preparação e análise exploratória, e evoluindo para modelação e avaliação.
+Este problema é relevante para a unidade curricular de Projeto de Ciência de Dados porque permite aplicar a metodologia **CRISP-DM** de forma completa, começando pela compreensão do problema e dos dados, passando pela preparação e análise exploratória, e evoluindo para modelação e avaliação.
 
 ## 2. Objetivos SMART
 *Defina os objetivos do projeto seguindo a lógica SMART (Específico, Mensurável, Atingível, Relevante e Temporal):*
 
-1. **Objetivo 1:** Construir, até à **Milestone 2**, um pipeline de preparação de dados reprodutível para o dataset **AirQualityUCI**, incluindo conversão de `Date` + `Time` para `timestamp`, remoção de colunas/linhas vazias e substituição dos valores inválidos `-200` por `NaN`, com documentação de todas as transformações.
-2. **Objetivo 2:** Realizar, até à **Milestone 2**, uma análise exploratória com **pelo menos 5 visualizações** e **5 conclusões documentadas** sobre padrões horários/diários, correlações entre sensores e poluentes, e relação com variáveis meteorológicas.
-3. **Objetivo 3:** Desenvolver e comparar, até à **Milestone 3**, **pelo menos 3 modelos de regressão** para prever uma variável-alvo (ex.: `CO(GT)` ou `NO2(GT)`), avaliados com **MAE, RMSE e R²**, obtendo uma melhoria mínima de **15% em MAE ou RMSE** face a um modelo de referência simples (baseline).
+1. **Objetivo 1 (Preparação e Qualidade dos Dados) — até à Milestone 2:**  
+   Construir um pipeline de preparação de dados **reprodutível** para o dataset **AirQualityUCI** que:
+   - converta corretamente `Date` + `Time` para uma coluna temporal (`timestamp`);
+   - remova colunas e linhas totalmente vazias do ficheiro CSV;
+   - substitua os valores inválidos `-200` por `NaN`;
+   - documente todas as transformações aplicadas.  
+
+   **Critérios de sucesso (mensuráveis):**
+   - notebook executável sem erros;
+   - dataset limpo gerado e guardado;
+   - tabela de qualidade dos dados com contagem/percentagem de valores em falta por variável.
+
+2. **Objetivo 2 (Análise Exploratória) — até à Milestone 2:**  
+   Realizar uma análise exploratória (EDA) ao dataset e identificar **pelo menos 5 padrões relevantes** relacionados com:
+   - padrões horários e/ou diários nas concentrações de poluentes;
+   - relações entre variáveis meteorológicas e poluentes;
+   - correlações entre sensores químicos (`PT08.*`) e variáveis de poluição.  
+
+   **Critérios de sucesso (mensuráveis):**
+   - mínimo de **5 visualizações**;
+   - mínimo de **5 conclusões documentadas**;
+   - registo das conclusões no notebook e no ficheiro da milestone.
+
+3. **Objetivo 3 (Modelação Preditiva) — até à Milestone 3:**  
+   Desenvolver e comparar **pelo menos 3 modelos de regressão** para prever uma variável-alvo de qualidade do ar (ex.: `CO(GT)` ou `NO2(GT)`), avaliando o desempenho com métricas adequadas.  
+
+   **Critérios de sucesso (mensuráveis):**
+   - avaliação com **MAE, RMSE e R²**;
+   - comparação com um **modelo de referência (baseline)** simples (ex.: média histórica);
+   - obtenção de melhoria de **pelo menos 15% em MAE ou RMSE** face ao baseline.
 
 ## 3. Metodologia de Gestão (PBL)
 * **Divisão de Tarefas:**
