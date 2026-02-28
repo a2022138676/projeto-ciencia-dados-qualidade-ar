@@ -55,18 +55,14 @@ O desafio do projeto consiste em preparar e analisar estes dados de forma reprod
 ## 3. Modelação (Milestone 3)
 
 ### Abordagem Técnica
-* **Modelos:** Baseline (média histórica), Regressão Linear, Random Forest Regressor e outro(s) modelo(s) de regressão a comparar.
-* **Métrica Principal:** **RMSE** (com avaliação complementar por **MAE** e **R²**).
+
 
 ## 4. Finalização (Milestone 4)
 
 ### Resposta ao Problema
-A solução final deverá permitir compreender padrões relevantes da qualidade do ar e estimar uma variável-alvo com recurso a modelos de regressão, contribuindo para apoio à monitorização ambiental e para uma melhor interpretação do comportamento dos poluentes ao longo do tempo.
+
 
 ### Recomendações de Inovação
-1. Implementar um dashboard para visualização contínua de padrões e previsões de qualidade do ar.
-2. Explorar validação temporal mais robusta e modelos adicionais para séries temporais.
-3. Avaliar estratégias de imputação e seleção de variáveis para melhorar desempenho e interpretabilidade.
 
 ## Como Reproduzir este Projeto
 1. Clone o repositório: `git clone [url-do-repo]`
