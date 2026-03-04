@@ -14,13 +14,13 @@ Como o conjunto de dados não inclui um índice único de “qualidade do ar”,
 
 ## 2. Objetivos SMART
 
-**Objetivo 0 (M1):** Até **24/02/2026 (Milestone 1)**, estruturar o repositório e documentar o plano do projeto, garantindo: repositório GitHub com estrutura completa, `README.md` inicial, `docs/M1_iniciacao.md` preenchido e um caderno no Kaggle com carregamento do conjunto de dados e inspeção básica.  
+**Objetivo 1 (M1):** Até **24/02/2026 (Milestone 1)**, estruturar o repositório e documentar o plano do projeto, garantindo: repositório GitHub com estrutura completa, `README.md` inicial, `docs/M1_iniciacao.md` preenchido e um caderno no Kaggle com carregamento do conjunto de dados e inspeção básica.  
 **Métrica de sucesso:** release/tag do M1 criado no GitHub e caderno a executar do início ao fim sem erros.
 
-**Objetivo 1 (M2):** Até ao final da **Milestone 2 (24/03/2026)**, preparar e explorar o conjunto de dados **AirQualityUCI** de forma reprodutível, incluindo: leitura correta do CSV (`sep=';'`, `decimal=','`), remoção de colunas/linhas totalmente vazias, conversão de `Date` + `Time` para `timestamp` e substituição do código de valores em falta `-200` por `NaN`.  
+**Objetivo 2 (M2):** Até ao final da **Milestone 2 (24/03/2026)**, preparar e explorar o conjunto de dados **AirQualityUCI** de forma reprodutível, incluindo: leitura correta do CSV (`sep=';'`, `decimal=','`), remoção de colunas/linhas totalmente vazias, conversão de `Date` + `Time` para `timestamp` e substituição do código de valores em falta `-200` por `NaN`.  
 **Métrica de sucesso:** geração de um relatório/tabela com a **percentagem de valores em falta por variável**, EDA com visualizações e conclusões registadas, e conjunto de dados processado exportado (quando aplicável).
 
-**Objetivo 2 (M3):** Até ao final da **Milestone 3 (21/04/2026)**, desenvolver e comparar **pelo menos 3 modelos de regressão** para prever **`CO(GT)`**, avaliando com **MAE** e **RMSE** (e **R²** como métrica complementar) e comparando com um **modelo de referência** simples (ex.: média histórica ou valor anterior).  
+**Objetivo 3 (M3):** Até ao final da **Milestone 3 (21/04/2026)**, desenvolver e comparar **pelo menos 3 modelos de regressão** para prever **`CO(GT)`**, avaliando com **MAE** e **RMSE** (e **R²** como métrica complementar) e comparando com um **modelo de referência** simples (ex.: média histórica ou valor anterior).  
 **Métrica de sucesso:** obter uma melhoria mínima de **15% em MAE ou RMSE** face ao modelo de referência, medida num conjunto de teste definido.
 
 ## 3. Metodologia de Gestão (PBL)
