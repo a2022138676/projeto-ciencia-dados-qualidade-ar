@@ -6,11 +6,11 @@
 
 ### 1.1. Distribuição da Variável Alvo
 
-A variável-alvo definida para este projeto é **`CO(GT)`**, correspondente à concentração de monóxido de carbono medida por um método de referência. Como o objetivo do trabalho é um problema de **aprendizagem supervisionada por regressão**, foi importante analisar a distribuição desta variável antes da fase de modelação, de forma a compreender a sua dispersão, a existência de assimetrias e a eventual presença de valores extremos.
+A variável-alvo definida para este projeto é **`CO(GT)`**, correspondente à concentração de monóxido de carbono medida por um método de referência. Como o objetivo do trabalho é um problema de **aprendizagem supervisionada por regressão**, foi importante analisar a distribuição desta variável antes da fase de modelação, de forma a compreender a sua dispersão, assimetria e eventual presença de valores extremos.
 
-Para esta análise foram utilizados **histogramas** e **boxplots**. O histograma foi escolhido por permitir observar a forma geral da distribuição dos valores, enquanto o boxplot facilita a identificação de dispersão, mediana e possíveis outliers. Esta opção metodológica foi adequada porque `CO(GT)` é uma variável numérica contínua e estas visualizações são especialmente úteis em análise univariada.
+Para esta análise foram utilizados **histogramas** e **boxplots**. O histograma foi escolhido por permitir observar a forma geral da distribuição da variável, enquanto o boxplot facilita a identificação de dispersão, mediana e possíveis outliers. Esta opção metodológica foi adequada porque `CO(GT)` é uma variável numérica contínua e estas visualizações são apropriadas para análise univariada.
 
-Antes da análise, os valores `-200` foram convertidos para `NaN`, uma vez que neste dataset representam valores em falta e não medições reais. Esta decisão foi essencial para evitar que a distribuição da variável-alvo fosse artificialmente distorcida.
+Antes da análise, os valores `-200` foram convertidos para `NaN`, uma vez que neste dataset representam valores em falta e não medições reais. Esta decisão foi necessária para evitar que a distribuição da variável-alvo fosse artificialmente distorcida por valores inválidos.
 
 > **Factos importantes:**  
 > - `CO(GT)` é uma variável numérica contínua.  
@@ -49,18 +49,25 @@ As principais decisões tomadas nesta fase foram as seguintes:
 
 - remoção das colunas finais totalmente vazias;
 - substituição do valor `-200` por `NaN`;
-- criação de uma tabela com o número e a percentagem de valores em falta por variável.
+- criação de uma tabela com o número e a percentagem de valores em falta por variável;
+- definição de uma estratégia de tratamento dos missing values.
 
-Estas decisões foram justificadas pelo facto de `-200` ser um código artificial e não um valor válido de medição. Mantê-lo no dataset poderia introduzir enviesamentos na análise estatística e na futura modelação.
+Estas decisões foram justificadas pelo facto de `-200` ser um código artificial e não um valor válido de medição. Mantê-lo no dataset introduziria enviesamentos na análise estatística e na futura modelação.
 
-* **Colunas afetadas:** várias variáveis numéricas apresentam valores em falta codificados como `-200`, com especial destaque para `NMHC(GT)`.
-* **Estratégia adotada:** substituição de `-200` por `NaN`, permitindo tratar os missing values de forma correta e transparente.
+A análise da percentagem de nulos mostrou que a variável **`NMHC(GT)`** apresenta uma percentagem extremamente elevada de valores em falta, o que compromete a sua utilidade analítica. Perante este resultado, optou-se por **remover esta coluna**.
 
-A análise realizada mostrou ainda que a variável **`NMHC(GT)`** apresenta uma percentagem muito elevada de valores em falta, o que poderá justificar uma decisão futura de exclusão ou tratamento específico. Outras variáveis também apresentam missing values, mas em grau menos severo.
+Relativamente à variável-alvo **`CO(GT)`**, as linhas com valores em falta foram removidas, pois não faz sentido imputar artificialmente a variável que se pretende prever.
+
+Nas restantes variáveis numéricas com valores em falta, foi aplicada **imputação pela mediana**. Esta opção foi escolhida em vez da média porque várias variáveis apresentam outliers e distribuições assimétricas, sendo a mediana uma medida mais robusta e menos sensível a valores extremos.
+
+* **Colunas afetadas:** várias variáveis numéricas apresentavam valores em falta codificados como `-200`, com especial destaque para `NMHC(GT)`, `CO(GT)`, `NO2(GT)` e `NOx(GT)`.
+* **Estratégia adotada:** remoção da coluna `NMHC(GT)`, eliminação das linhas com `CO(GT)` em falta e preenchimento dos restantes missing values com a mediana.
+
+Após a aplicação desta estratégia, **deixaram de existir valores em falta no conjunto de dados**, permitindo avançar para as fases seguintes com uma base de dados limpa e consistente.
 
 ### 2.2. Outliers e Inconsistências
 
-Os **outliers** foram identificados com recurso aos boxplots, por serem uma ferramenta adequada para detetar valores extremos em variáveis numéricas contínuas. Esta opção foi escolhida porque permite visualizar rapidamente dispersão, amplitude interquartil e observações afastadas do padrão central.
+Os **outliers** foram identificados com recurso aos boxplots, por serem uma ferramenta adequada para detetar valores extremos em variáveis numéricas contínuas. Esta escolha foi feita porque permite visualizar rapidamente dispersão, amplitude interquartil e observações afastadas do padrão central.
 
 Foram identificadas as seguintes inconsistências e aspetos a corrigir:
 
@@ -99,7 +106,6 @@ A tabela seguinte apresenta as variáveis consideradas após a fase inicial de l
 | `timestamp` | Datetime | Variável temporal criada a partir de `Date` e `Time` |
 | `CO(GT)` | Float | Variável-alvo: concentração de monóxido de carbono |
 | `PT08.S1(CO)` | Float | Leitura do sensor relacionada com CO |
-| `NMHC(GT)` | Float | Medição de hidrocarbonetos não metânicos; variável com elevada percentagem de missing values |
 | `C6H6(GT)` | Float | Concentração de benzeno |
 | `PT08.S2(NMHC)` | Float | Leitura do sensor relacionada com NMHC |
 | `NOx(GT)` | Float | Concentração de óxidos de azoto |
@@ -111,7 +117,7 @@ A tabela seguinte apresenta as variáveis consideradas após a fase inicial de l
 | `RH` | Float | Humidade relativa |
 | `AH` | Float | Humidade absoluta |
 
-As colunas totalmente vazias presentes no ficheiro original foram removidas na fase inicial de limpeza, pelo que deixaram de integrar o conjunto de dados de trabalho.
+As colunas totalmente vazias presentes no ficheiro original foram removidas na fase inicial de limpeza, pelo que deixaram de integrar o conjunto de dados de trabalho. A variável `NMHC(GT)` também foi removida devido à percentagem excessiva de valores em falta.
 
 ## 5. Conclusões da Fase de Exploração
 
@@ -121,13 +127,14 @@ As principais conclusões desta fase foram as seguintes:
 
 - o dataset é constituído maioritariamente por variáveis numéricas contínuas, complementadas por duas variáveis temporais originais (`Date` e `Time`);
 - a variável-alvo `CO(GT)` apresenta uma distribuição assimétrica, com maior concentração de valores baixos e presença de possíveis outliers;
-- os atributos com maior relação com `CO(GT)` são sobretudo **sensores químicos e outros poluentes**, com destaque para `C6H6(GT)`, `PT08.S2(NMHC)`, `NMHC(GT)`, `PT08.S1(CO)` e `PT08.S5(O3)`;
+- os atributos com maior relação com `CO(GT)` são sobretudo **sensores químicos e outros poluentes**, com destaque para `C6H6(GT)`, `PT08.S2(NMHC)`, `PT08.S1(CO)`, `PT08.S5(O3)` e `NOx(GT)`;
 - a variável `PT08.S3(NOx)` apresenta uma relação inversa forte com `CO(GT)`, sendo uma das relações mais distintivas da análise;
-- as variáveis meteorológicas (`T`, `RH`, `AH`) revelam baixa capacidade explicativa isolada para a previsão de `CO(GT)`;
-- existem problemas de qualidade dos dados, sobretudo associados a missing values codificados como `-200`, com especial destaque para `NMHC(GT)`;
+- as variáveis meteorológicas (`T`, `RH` e `AH`) revelam baixa capacidade explicativa isolada para a previsão de `CO(GT)`;
+- existiam problemas relevantes de qualidade dos dados, sobretudo associados a missing values codificados como `-200`, que foram devidamente tratados;
+- a estratégia de tratamento de missing values permitiu eliminar os nulos do dataset final, mantendo a informação mais relevante para a modelação;
 - a criação da variável `timestamp` melhorou a representação temporal dos registos e aumentou a rastreabilidade da transformação dos dados.
 
-De forma geral, os dados apresentam qualidade suficiente para avançar para as próximas etapas do projeto, desde que sejam concluídas as decisões relativas ao tratamento final de missing values, análise mais aprofundada de outliers, possível seleção de atributos e preparação final do dataset para modelação.
+De forma geral, os dados apresentam qualidade suficiente para avançar para as próximas etapas do projeto, desde que sejam concluídas as decisões relativas à análise mais aprofundada de outliers, possível seleção de atributos e preparação final do dataset para modelação.
 
 ---
 
