@@ -90,11 +90,13 @@ A engenharia de atributos teve como objetivo tornar o dataset mais adequado à a
 
 ### 3.2. Criação de Novos Atributos
 
-Foi criada a variável **`timestamp`** a partir da combinação de `Date` e `Time`. Esta transformação foi considerada relevante porque permite representar cada observação com uma marca temporal única e facilita futuras análises cronológicas.
+Como forma de acrescentar valor ao dataset original, foi criada a variável **`timestamp`** a partir da combinação das colunas `Date` e `Time`. Esta transformação foi considerada relevante porque permite representar o momento de cada medição de forma adequada, facilitando análises temporais e a criação de novos atributos mais úteis para a modelação.
 
-* **Nova Variável `timestamp`:** criada a partir da junção de `Date` e `Time`, permitindo uma representação temporal mais adequada dos registos.
+A partir de `timestamp`, foram criadas as seguintes variáveis derivadas:
 
-Além disso, foi analisada a frequência das variáveis `Date` e `Time`, que constituem as únicas variáveis não numéricas do dataset original. Verificou-se que cada data tende a aparecer com **24 registos**, o que é consistente com medições horárias ao longo de um dia completo. Esta observação reforça a coerência temporal do conjunto de dados.
+* **Nova Variável `hour`:** extraída de `timestamp`, permitindo captar variações horárias na concentração dos poluentes e possíveis padrões associados a diferentes momentos do dia.
+* **Nova Variável `day_of_week`:** extraída de `timestamp`, permitindo representar diferenças entre dias da semana, que podem refletir alterações de atividade humana, tráfego ou padrões de emissão.
+* **Nova Variável `month`:** extraída de `timestamp`, permitindo captar possíveis padrões sazonais e diferenças entre meses do período em análise.
 
 ## 4. Dicionário de Dados Final (Pós-Processamento)
 
