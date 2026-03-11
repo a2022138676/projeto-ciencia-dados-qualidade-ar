@@ -84,8 +84,9 @@ Nesta fase, os outliers foram **identificados e documentados**, mas não elimina
 
 A engenharia de atributos teve como objetivo tornar o dataset mais adequado à análise e à modelação futura, melhorando a representação temporal dos registos e preparando os dados para utilização em algoritmos de regressão.
 
-* **Encoding:** não foi aplicado encoding categórico tradicional, uma vez que o dataset é maioritariamente composto por variáveis numéricas. As variáveis `Date` e `Time`, embora não numéricas, representam informação temporal e foram tratadas através da criação de uma variável temporal unificada.
-* **Escalonamento:** nesta fase ainda não foi aplicado escalonamento. Esta decisão justifica-se pelo facto de o foco atual estar na exploração, limpeza e compreensão dos dados. O escalonamento será avaliado posteriormente, de acordo com os modelos que forem testados na Milestone 3.
+* **Encoding:** Não foi aplicado encoding diretamente às colunas originais `Date` e `Time`, uma vez que estas representam informação temporal bruta e gerariam demasiadas categorias. Em vez disso, foi criada a variável `timestamp` e, a partir desta, foram extraídas variáveis temporais derivadas mais interpretáveis. Posteriormente, foi aplicado **One-Hot Encoding** às variáveis categóricas `day_of_week` e `month`, transformando os diferentes dias da semana e meses em colunas binárias. Esta opção foi escolhida por permitir representar categorias sem introduzir uma ordem artificial entre elas.
+
+* **Escalonamento:** Foi aplicado **StandardScaler** às variáveis numéricas preditoras, com o objetivo de colocar os atributos numa escala comparável e reduzir o impacto de diferenças de magnitude entre variáveis. Esta transformação é relevante porque alguns algoritmos de modelação são sensíveis à escala dos atributos. A variável-alvo **`CO(GT)`** foi mantida na sua escala original, por corresponder ao valor que se pretende prever.
 
 ### 3.2. Criação de Novos Atributos
 
