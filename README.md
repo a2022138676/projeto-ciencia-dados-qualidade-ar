@@ -19,13 +19,9 @@ A estrutura deste projeto segue boas práticas de Ciência de Dados e Engenharia
 ## 1. Iniciação (Milestone 1)
 
 ### Contexto e Problema de Negócio
-Este projeto centra-se na **monitorização da qualidade do ar**, um tema com impacto direto na **saúde pública**, na **gestão ambiental** e no **planeamento urbano**. A poluição atmosférica afeta o bem-estar da população e constitui uma dimensão importante para apoiar políticas públicas, sistemas de monitorização e medidas de prevenção.
+A qualidade do ar é um tema relevante para a saúde pública, para a gestão ambiental e para o apoio à decisão em contexto urbano. A existência de mecanismos que permitam antecipar níveis mais elevados de poluição pode ajudar entidades públicas e sistemas de monitorização a agir de forma mais informada.
 
-O conjunto de dados selecionado, **AirQualityUCI**, contém medições **horárias** de poluentes atmosféricos, como `CO(GT)`, `NOx(GT)` e `NO2(GT)`, bem como leituras de sensores químicos (`PT08.*`) e variáveis meteorológicas, nomeadamente temperatura (`T`), humidade relativa (`RH`) e humidade absoluta (`AH`).
-
-Como o dataset não apresenta um índice global único de “qualidade do ar”, o projeto incide sobre um **indicador mensurável de poluição**. Para a abordagem de **aprendizagem supervisionada por regressão**, foi definida como variável-alvo a coluna **`CO(GT)`**, por corresponder a uma medição de referência de um poluente atmosférico e permitir objetivos concretos de previsão.
-
-O desafio do projeto consiste em **preparar, explorar e analisar** estes dados de forma reprodutível, identificando padrões relevantes e avaliando a capacidade de **prever `CO(GT)`** com modelos de regressão.
+Neste projeto pretende-se estudar a previsão da concentração de monóxido de carbono em ambiente urbano, procurando avaliar se é possível estimar esse valor com base em informação recolhida em contexto de monitorização da qualidade do ar. O problema é relevante porque a antecipação de episódios de maior poluição pode apoiar ações de prevenção, vigilância e mitigação.
 
 ### Objetivos do Projeto
 * **Objetivo 1:** Construir um processo de preparação de dados reprodutível, incluindo leitura correta do CSV (`sep=';'` e `decimal=','`), remoção de colunas e linhas vazias, criação da variável temporal `timestamp` e conversão do valor `-200` para `NaN`.
