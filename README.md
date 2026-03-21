@@ -24,9 +24,10 @@ A qualidade do ar é um tema relevante para a saúde pública, para a gestão am
 Neste projeto pretende-se estudar a previsão da concentração de monóxido de carbono em ambiente urbano, procurando avaliar se é possível estimar esse valor com base em informação recolhida em contexto de monitorização da qualidade do ar. O problema é relevante porque a antecipação de episódios de maior poluição pode apoiar ações de prevenção, vigilância e mitigação.
 
 ### Objetivos do Projeto
-* **Objetivo 1:** Construir um processo de preparação de dados reprodutível, incluindo leitura correta do CSV (`sep=';'` e `decimal=','`), remoção de colunas e linhas vazias, criação da variável temporal `timestamp` e conversão do valor `-200` para `NaN`.
-* **Objetivo 2:** Realizar análise exploratória de dados (EDA) para identificar padrões temporais, relações entre sensores e poluentes e possíveis ligações com variáveis meteorológicas.
-* **Objetivo 3:** Desenvolver e comparar modelos de regressão para prever a variável-alvo **`CO(GT)`**, avaliando o desempenho face a um modelo de referência simples.
+* **Objetivo 1:** Até ao final da Milestone 2, preparar um conjunto de dados consistente e reprodutível para modelação, garantindo a remoção de colunas irrelevantes, o tratamento de valores em falta, a criação de atributos temporais derivados e a documentação completa das transformações efetuadas.
+* **Objetivo 2:** Até ao final da Milestone 3, desenvolver e comparar pelo menos três modelos de regressão para prever a concentração de monóxido de carbono, avaliando o seu desempenho com base nas métricas RMSE, MAE e R².
+* **Objetivo 3:** Até ao final da Milestone 3, selecionar um modelo com desempenho superior a um baseline simples, demonstrando capacidade preditiva útil para a estimação da concentração de monóxido de carbono.
+* **Objetivo 4:** Até ao final da Milestone 4, interpretar os resultados obtidos e identificar os atributos com maior influência na previsão, de forma a produzir conclusões úteis para a monitorização da poluição atmosférica.
 
 ### Fonte de Dados
 * **Dataset:** AirQualityUCI (Kaggle / ficheiros `AirQualityUCI.csv` e `AirQualityUCI.xlsx`)
