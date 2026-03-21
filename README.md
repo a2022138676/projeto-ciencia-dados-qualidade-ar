@@ -1,4 +1,4 @@
-# Projeto de Ciência de Dados — Qualidade do Ar (AirQualityUCI)
+# Previsão da Concentração de Monóxido de Carbono com Dados de Qualidade do Ar
 
 ## Identificação da Equipa
 * **Grupo nº:** 11
