@@ -67,6 +67,7 @@ Até ao momento, na Milestone 2, foram desenvolvidas as seguintes etapas:
 
 ### Principais Conclusões (EDA)
 <img width="955" height="659" alt="image" src="https://github.com/user-attachments/assets/821abe2f-8fd1-4034-9287-68232033b0f5" />
+*Figura 1 — Heatmap da matriz de correlação entre as variáveis numéricas do dataset.*
 
 * **Ponto-chave:** O valor **`-200`** representa valores em falta e teve de ser convertido para `NaN` antes de qualquer análise estatística ou modelação.
 * **Ponto-chave:** A variável **`NMHC(GT)`** revelou uma percentagem muito elevada de valores em falta, o que justificou a sua remoção.
