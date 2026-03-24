@@ -66,8 +66,9 @@ Até ao momento, na Milestone 2, foram desenvolvidas as seguintes etapas:
 * Registo técnico e justificação das decisões em `docs/M2_exploracao.md`.
 
 ### Principais Conclusões (EDA)
-> *Sugestão: inserir aqui o heatmap de correlação ou um dos scatter plots mais relevantes do projeto.*
-
+ Pastas de Dados: data/raw e data/processed atualizadas (respeitando o limite de tamanho).
+ Figuras: Gráficos mais importantes salvos em reports/figures/. 
+ 
 * **Ponto-chave:** O valor **`-200`** representa valores em falta e teve de ser convertido para `NaN` antes de qualquer análise estatística ou modelação.
 * **Ponto-chave:** A variável **`NMHC(GT)`** revelou uma percentagem muito elevada de valores em falta, o que justificou a sua remoção.
 * **Ponto-chave:** As variáveis **`C6H6(GT)`** e **`PT08.S2(NMHC)`** apresentaram correlações positivas muito fortes com `CO(GT)`, enquanto **`PT08.S3(NOx)`** evidenciou uma relação inversa forte.
