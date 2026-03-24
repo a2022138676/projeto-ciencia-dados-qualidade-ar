@@ -29,6 +29,12 @@ Neste projeto pretende-se estudar a previsão da concentração de monóxido de 
 * **Objetivo 3:** Até ao final da Milestone 3, selecionar um modelo com desempenho superior a um baseline simples, demonstrando capacidade preditiva útil para a estimação da concentração de monóxido de carbono.
 * **Objetivo 4:** Até ao final da Milestone 4, interpretar os resultados obtidos e identificar os atributos com maior influência na previsão, de forma a produzir conclusões úteis para a monitorização da poluição atmosférica.
 
+### Questões de Investigação
+* É possível prever a concentração de monóxido de carbono com desempenho superior a um modelo de referência simples, utilizando modelos de regressão?
+* Que variáveis apresentam maior contributo para a previsão da concentração de monóxido de carbono?
+* A inclusão de variáveis temporais derivadas melhora o desempenho preditivo dos modelos?
+* Modelos não lineares apresentam melhor desempenho do que modelos lineares na previsão da concentração de monóxido de carbono?
+
 ### Fonte de Dados
 * **Dataset:** AirQualityUCI (Kaggle / ficheiros `AirQualityUCI.csv` e `AirQualityUCI.xlsx`)
 * **Dimensão:** 9357 linhas e 15 colunas úteis, após a limpeza estrutural inicial do ficheiro CSV
