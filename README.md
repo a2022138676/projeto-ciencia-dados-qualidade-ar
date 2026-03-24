@@ -36,12 +36,18 @@ Neste projeto pretende-se estudar a previsão da concentração de monóxido de 
 * Modelos não lineares apresentam melhor desempenho do que modelos lineares na previsão da concentração de monóxido de carbono?
 
 ### Fonte de Dados
-* **Fonte oficial do dataset:** UCI Machine Learning Repository — *Air Quality*
-* **Criador:** Saverio Vito
-* **DOI:** 10.24432/C5060Z
-* **Ligação oficial:** https://archive.ics.uci.edu/dataset/387/air+quality
-* **Plataforma utilizada no projeto:** Kaggle
-* **Ligação Kaggle:** https://www.kaggle.com/datasets/jhonan/airqualityuci
+* Fonte oficial do dataset: UCI Machine Learning Repository — Air Quality
+* Criador: Saverio Vito
+* DOI: 10.24432/C5060Z
+* Ligação oficial: https://archive.ics.uci.edu/dataset/387/air+quality
+
+### Plataforma de Desenvolvimento
+A exploração, limpeza e preparação inicial dos dados têm sido desenvolvidas em ambiente Kaggle Notebook, utilizando a versão do dataset disponibilizada na plataforma Kaggle. O notebook principal desta fase foi posteriormente exportado para a pasta `notebooks/` do repositório GitHub.
+
+* Plataforma: Kaggle
+* Dataset no Kaggle: AirQualityUCI
+* Ligação do dataset: https://www.kaggle.com/datasets/jhonan/airqualityuci
+* Ligação do notebook: https://www.kaggle.com/code/tiagosimoesrodrigues/airquality-dataset
 
 ## 2. Exploração (Milestone 2)
 
