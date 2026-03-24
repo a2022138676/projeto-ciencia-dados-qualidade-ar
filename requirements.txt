@@ -1,5 +1,17 @@
 pandas
+# manipulação e transformação de dados tabulares
+
 numpy
-scikit-learn
+# operações numéricas e suporte a arrays
+
 matplotlib
+# criação de gráficos e visualizações básicas
+
 seaborn
+# visualização estatística e heatmaps
+
+scikit-learn
+# preprocessing, escalonamento, modelação e avaliação
+
+jupyter
+# execução de notebooks em ambiente local, quando aplicável
