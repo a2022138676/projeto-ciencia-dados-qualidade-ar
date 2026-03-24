@@ -67,13 +67,13 @@ Até ao momento, na Milestone 2, foram desenvolvidas as seguintes etapas:
 
 ### Principais Conclusões (EDA)
 <img width="955" height="659" alt="image" src="https://github.com/user-attachments/assets/821abe2f-8fd1-4034-9287-68232033b0f5" />
+
 *Figura 1 — Heatmap da matriz de correlação entre as variáveis numéricas do dataset.*
 
-* **Ponto-chave:** O valor **`-200`** representa valores em falta e teve de ser convertido para `NaN` antes de qualquer análise estatística ou modelação.
-* **Ponto-chave:** A variável **`NMHC(GT)`** revelou uma percentagem muito elevada de valores em falta, o que justificou a sua remoção.
-* **Ponto-chave:** As variáveis **`C6H6(GT)`** e **`PT08.S2(NMHC)`** apresentaram correlações positivas muito fortes com `CO(GT)`, enquanto **`PT08.S3(NOx)`** evidenciou uma relação inversa forte.
-* **Ponto-chave:** As variáveis meteorológicas **`T`**, **`RH`** e **`AH`** revelaram correlações fracas com a variável-alvo.
-* **Ponto-chave:** Até ao momento, o tratamento dos missing values e dos outliers deixou o dataset mais preparado para as etapas seguintes de engenharia de atributos e modelação.
+* Ponto-chave: O valor `-200` representa valores em falta e foi convertido para `NaN` antes da análise.
+* Ponto-chave: A variável `NMHC(GT)` apresentou uma percentagem muito elevada de valores em falta, o que justificou a sua remoção.
+* Ponto-chave: As variáveis `C6H6(GT)` e `PT08.S2(NMHC)` apresentaram correlações positivas muito fortes com `CO(GT)`.
+* Ponto-chave: As variáveis meteorológicas `T`, `RH` e `AH` revelaram correlações fracas com a variável-alvo.
 
 ## 3. Modelação (Milestone 3)
 
