@@ -150,4 +150,4 @@ De forma geral, os dados apresentam qualidade suficiente para avançar para as p
 
 ---
 
-*Data de última atualização: [DD/MM/AAAA]*
+*Data de última atualização: [25/03/2026]*
