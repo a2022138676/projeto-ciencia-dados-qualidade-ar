@@ -1,153 +1,121 @@
-# Milestone 2: Análise Exploratória e Engenharia de Atributos
+# Previsão da Concentração de Monóxido de Carbono com Dados de Qualidade do Ar
 
-> **Nota de Revisão:** Este documento pressupõe que o dataset já foi identificado e descrito no ficheiro `docs/M1_iniciacao.md`. Caso seja necessário consultar o significado original das variáveis, deve consultar-se essa Milestone.
+## Identificação da Equipa
+* **Grupo nº:** 11
+* **Membros:**
+  * Rodrigo Pedro — a2023129724
+  * Tiago Rodrigues — a2022138676
 
-## 1. Análise Exploratória de Dados (EDA)
+## Organização do Repositório
+A estrutura deste projeto segue boas práticas de Ciência de Dados e Engenharia de Software:
 
-### 1.1. Distribuição da Variável Alvo
+* **`data/`**: armazenamento de dados (`raw/` para dados brutos e `processed/` para dados preparados)
+* **`docs/`**: documentação técnica detalhada por Milestones (`M1`, `M2`, `M3` e `M4`)
+* **`notebooks/`**: Jupyter Notebooks para exploração, limpeza, preparação e modelação
+* **`src/`**: código-fonte modular com funções reutilizáveis
+* **`reports/`**: relatórios finais, apresentações e exportação de figuras (`figures/`)
+* **`requirements.txt`**: bibliotecas e dependências necessárias ao projeto
 
-A variável-alvo definida para este projeto é **`CO(GT)`**, correspondente à concentração de monóxido de carbono medida por um método de referência. Como o objetivo do trabalho é um problema de **aprendizagem supervisionada por regressão**, foi importante analisar a distribuição desta variável antes da fase de modelação, de forma a compreender a sua dispersão, assimetria e eventual presença de valores extremos.
+## 1. Iniciação (Milestone 1)
 
-Para esta análise foram utilizados **histogramas** e **boxplots**. O histograma foi escolhido por permitir observar a forma geral da distribuição da variável, enquanto o boxplot facilita a identificação de dispersão, mediana e possíveis outliers. Esta escolha foi adequada porque `CO(GT)` é uma variável numérica contínua e estas visualizações são apropriadas para análise univariada.
+### Contexto e Problema de Negócio
+A qualidade do ar é um tema relevante para a saúde pública, para a gestão ambiental e para o apoio à decisão em contexto urbano. A existência de mecanismos que permitam antecipar níveis mais elevados de poluição pode ajudar entidades públicas e sistemas de monitorização a agir de forma mais informada.
 
-Antes da análise, os valores `-200` foram convertidos para `NaN`, uma vez que neste dataset representam valores em falta e não medições reais. Esta decisão foi necessária para evitar que a distribuição da variável-alvo fosse artificialmente distorcida por valores inválidos.
+Neste projeto pretende-se estudar a previsão da concentração de monóxido de carbono em ambiente urbano, procurando avaliar se é possível estimar esse valor com base em informação recolhida em contexto de monitorização da qualidade do ar. O problema é relevante porque a antecipação de episódios de maior poluição pode apoiar ações de prevenção, vigilância e mitigação.
 
-> **Factos importantes:**  
-> - `CO(GT)` é uma variável numérica contínua.  
-> - A distribuição apresenta maior concentração de observações em valores mais baixos.  
-> - Verifica-se assimetria positiva, com alguns valores mais elevados afastados da maioria dos registos.  
-> - O boxplot evidencia a presença de possíveis outliers, o que justificou atenção posterior na fase de preparação dos dados.
+### Objetivos do Projeto
+* **Objetivo 1:** Até ao final da Milestone 2, obter um conjunto de dados limpo e consistente para modelação, sem valores em falta nas variáveis utilizadas, com atributos temporais derivados e com todas as transformações devidamente documentadas.
+* **Objetivo 2:** Até ao final da Milestone 3, treinar e avaliar pelo menos três modelos de regressão para prever a concentração de monóxido de carbono, recorrendo às métricas RMSE, MAE e R².
+* **Objetivo 3:** Até ao final da Milestone 3, identificar um modelo com desempenho superior a um baseline simples, evidenciando capacidade preditiva relevante para o problema em estudo.
+* **Objetivo 4:** Até ao final da Milestone 4, identificar os atributos com maior contributo para a previsão e apresentar conclusões que apoiem a interpretação do fenómeno de poluição atmosférica analisado.
 
-### 1.2. Correlações Relevantes
+### Questões de Investigação
+* É possível prever a concentração de monóxido de carbono com desempenho útil a partir dos dados disponíveis?
+* Que atributos têm maior influência na previsão da concentração de monóxido de carbono?
+* A utilização de modelos não lineares melhora a capacidade preditiva face a modelos lineares?
+* A criação de novos atributos e a seleção de variáveis melhoram o desempenho dos modelos?
 
-Após a análise univariada, foi realizada uma análise bivariada com o objetivo de identificar as variáveis com maior relação com a variável-alvo `CO(GT)`. Para isso, foi gerada uma **matriz de correlação (heatmap)** e foram criados **gráficos de dispersão (scatter plots)** entre `CO(GT)` e os restantes atributos numéricos.
+### Fonte de Dados
+* **Fonte oficial do dataset:** UCI Machine Learning Repository — Air Quality
+* **Criador:** Saverio Vito
+* **DOI:** 10.24432/C5060Z
+* **Ligação oficial:** https://archive.ics.uci.edu/dataset/387/air+quality
 
-A utilização da matriz de correlação permitiu obter uma visão global das associações lineares entre variáveis, enquanto os gráficos de dispersão ajudaram a perceber a forma dessas relações, a sua intensidade e o grau de dispersão.
+### Plataforma de Desenvolvimento
+A exploração, limpeza e preparação inicial dos dados têm sido desenvolvidas em ambiente Kaggle Notebook, utilizando a versão do dataset disponibilizada na plataforma Kaggle. O notebook principal desta fase foi posteriormente exportado para a pasta `notebooks/` do repositório GitHub.
 
-A análise visual permitiu retirar as seguintes conclusões principais:
+* **Plataforma:** Kaggle
+* **Dataset no Kaggle:** AirQualityUCI
+* **Ligação do dataset:** https://www.kaggle.com/datasets/jhonan/airqualityuci
+* **Ligação do notebook:** https://www.kaggle.com/code/tiagosimoesrodrigues/airquality-dataset
 
-* **`C6H6(GT)` vs. `CO(GT)`:** apresenta uma **correlação positiva muito forte**, sugerindo forte capacidade explicativa para a variável-alvo.
-* **`PT08.S2(NMHC)` vs. `CO(GT)`:** apresenta também uma **correlação positiva muito forte**, confirmando que este sensor poderá ser particularmente relevante para a modelação.
-* **`PT08.S1(CO)` vs. `CO(GT)`:** mostra uma **correlação positiva forte**, coerente com a natureza do sensor e com o comportamento esperado da variável.
-* **`PT08.S5(O3)` vs. `CO(GT)`:** revela uma **correlação positiva forte**, com tendência crescente visualmente clara.
-* **`NOx(GT)` vs. `CO(GT)`:** apresenta uma **correlação positiva significativa**, embora com maior dispersão.
-* **`PT08.S3(NOx)` vs. `CO(GT)`:** destaca-se por uma **correlação negativa forte**, evidenciando uma relação inversa relevante.
-* **`T`, `RH` e `AH` vs. `CO(GT)`:** as variáveis meteorológicas revelam **correlações fracas** com a variável-alvo, o que sugere menor capacidade explicativa isolada.
+### Dimensão dos Dados
+* **Dimensão atual de trabalho:** 9357 linhas e 15 colunas úteis, após limpeza estrutural inicial do ficheiro CSV
 
-De forma geral, conclui-se que **os sensores químicos e os poluentes atmosféricos apresentam relações mais fortes com `CO(GT)` do que as variáveis meteorológicas**. Verificou-se também a existência de **multicolinearidade** entre algumas variáveis independentes, o que justificou a etapa posterior de seleção de atributos.
+## 2. Exploração (Milestone 2)
 
-## 2. Qualidade dos Dados e Limpeza
+### Limpeza e Preparação
+Até ao momento, na Milestone 2, foram desenvolvidas as seguintes etapas:
 
-### 2.1. Tratamento de Dados em Falta (Missing Data)
+* Leitura do ficheiro CSV com `sep=';'` e `decimal=','`
+* Remoção de colunas totalmente vazias e de linhas vazias no final do ficheiro
+* Identificação do valor `-200` como código de valores em falta e conversão para `NaN`
+* Criação da variável temporal `timestamp` a partir da junção de `Date` e `Time`
+* Análise da percentagem de valores em falta por coluna
+* Remoção da variável `NMHC(GT)` devido à elevada percentagem de missing values
+* Remoção das linhas com `CO(GT)` em falta, por se tratar da variável-alvo
+* Preenchimento dos restantes valores em falta com a mediana
+* Verificação dos tipos de dados e tratamento inicial de outliers nas variáveis preditoras com base no método do IQR
+* Aplicação de One-Hot Encoding às variáveis categóricas derivadas
+* Aplicação de StandardScaler às variáveis numéricas contínuas preditoras
+* Criação de novos atributos e seleção inicial de variáveis redundantes com base em multicolinearidade
+* Exportação do dataset processado para ficheiro CSV
+* Registo técnico e justificação das decisões em `docs/M2_exploracao.md`
 
-A qualidade dos dados foi analisada através da identificação de colunas vazias, valores em falta e inconsistências no ficheiro original. Verificou-se que o dataset inclui valores `-200`, que não correspondem a medições reais, mas sim a ausência de registo.
+### Principais Conclusões (EDA)
+> Sugestão: inserir aqui o heatmap de correlação ou um dos scatter plots mais relevantes do projeto.
 
-As principais decisões tomadas nesta fase foram as seguintes:
+![Heatmap da matriz de correlação](reports/figures/heatmap_correlacao.png)
 
-- remoção das colunas finais totalmente vazias;
-- substituição do valor `-200` por `NaN`;
-- criação de uma tabela com o número e a percentagem de valores em falta por variável;
-- definição de uma estratégia de tratamento dos missing values.
+*Figura 1 — Heatmap da matriz de correlação entre as variáveis numéricas do dataset.*
 
-Estas decisões foram justificadas pelo facto de `-200` ser um código artificial e não um valor válido de medição. Mantê-lo no dataset introduziria enviesamentos na análise estatística e na futura modelação.
+* **Ponto-chave:** O valor `-200` representa valores em falta e teve de ser convertido para `NaN` antes de qualquer análise estatística ou modelação.
+* **Ponto-chave:** A variável `NMHC(GT)` revelou uma percentagem muito elevada de valores em falta, o que justificou a sua remoção.
+* **Ponto-chave:** As variáveis `C6H6(GT)` e `PT08.S2(NMHC)` apresentaram correlações positivas muito fortes com `CO(GT)`, enquanto `PT08.S3(NOx)` evidenciou uma relação inversa forte.
+* **Ponto-chave:** As variáveis meteorológicas `T`, `RH` e `AH` revelaram correlações fracas com a variável-alvo.
+* **Ponto-chave:** Até ao momento, o tratamento dos missing values, dos outliers e a criação de novos atributos deixaram o dataset mais preparado para as etapas seguintes de modelação.
 
-A análise da percentagem de nulos mostrou que a variável **`NMHC(GT)`** apresentava uma percentagem extremamente elevada de valores em falta, o que comprometia a sua utilidade analítica. Perante este resultado, optou-se por **remover esta coluna**.
+## 3. Modelação (Milestone 3)
 
-Relativamente à variável-alvo **`CO(GT)`**, as linhas com valores em falta foram removidas, pois não faz sentido imputar artificialmente a variável que se pretende prever.
+### Abordagem Técnica
+* **Modelos previstos:** Regressão Linear, Ridge, Lasso, Random Forest Regressor e Gradient Boosting Regressor
+* **Métrica principal:** RMSE
+* **Métricas complementares:** MAE e R²
 
-Nas restantes variáveis numéricas com valores em falta, foi aplicada **imputação pela mediana**. Esta opção foi escolhida em vez da média porque várias variáveis apresentam outliers e distribuições assimétricas, sendo a mediana uma medida mais robusta e menos sensível a valores extremos.
+## 4. Finalização (Milestone 4)
 
-* **Colunas afetadas:** várias variáveis numéricas apresentavam valores em falta codificados como `-200`, com especial destaque para `NMHC(GT)`, `CO(GT)`, `NO2(GT)` e `NOx(GT)`.
-* **Estratégia adotada:** remoção da coluna `NMHC(GT)`, eliminação das linhas com `CO(GT)` em falta e preenchimento dos restantes missing values com a mediana.
+### Resposta ao Problema
+No final do projeto, será apresentada uma solução reprodutível para prever a concentração de monóxido de carbono a partir de leituras de sensores e variáveis ambientais, incluindo a identificação dos fatores com maior influência e a avaliação do desempenho face a um modelo de referência.
 
-Após a aplicação desta estratégia, **deixaram de existir valores em falta no conjunto de dados**, permitindo avançar para as fases seguintes com uma base de dados limpa e consistente.
+### Recomendações de Inovação
+1. Integrar o modelo num sistema de monitorização com alertas automáticos quando a previsão ultrapassar um limiar definido.
+2. Explorar validação temporal e atualização periódica do modelo, de forma a lidar com sazonalidade e possível deriva do conceito.
+3. Criar variáveis adicionais, como indicadores temporais mais detalhados ou médias móveis, para melhorar a capacidade preditiva.
+4. Comparar abordagens lineares e não lineares, avaliando o impacto da multicolinearidade observada entre algumas variáveis.
 
-### 2.2. Outliers e Inconsistências
+## Como Reproduzir este Projeto
+1. Clone o repositório: `git clone https://github.com/a2022138676/projeto-ciencia-dados-qualidade-ar.git`
+2. Instale as dependências: `pip install -r requirements.txt`
+3. Execute os notebooks na pasta `notebooks/`, seguindo a ordem numérica
+4. Consulte os ficheiros na pasta `docs/` para acompanhar a evolução do projeto por Milestone
 
-Os **outliers** foram identificados com recurso ao método do **intervalo interquartil (IQR)**, por se tratar de uma abordagem robusta para variáveis numéricas contínuas. Esta opção permitiu quantificar o número e a percentagem de valores atípicos por variável, sem repetir em excesso os boxplots já utilizados na análise univariada.
+## Referências
+1. Vito, S. (2008). *Air Quality* [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5060Z
+2. Kaggle. *AirQualityUCI*. Disponível em: https://www.kaggle.com/datasets/jhonan/airqualityuci
+3. Méndez, M., Merayo, M. G., & Núñez, M. (2023). *Machine learning algorithms to forecast air quality: a survey*.
+4. Aula, K., Mäkelä, V., et al. (2022). *Evaluation of low-cost air quality sensor calibration models*.
 
-Foi também realizada uma verificação dos tipos de dados do dataset, de forma a garantir que a variável `timestamp` se mantinha em formato temporal e que as restantes variáveis quantitativas estavam corretamente reconhecidas em formato numérico. Esta validação foi importante para assegurar consistência na preparação dos dados.
-
-Foram identificadas as seguintes inconsistências e aspetos a corrigir:
-
-- existência de colunas totalmente vazias no ficheiro original;
-- presença do valor `-200` como código de missing values;
-- necessidade de juntar `Date` e `Time` numa única variável temporal;
-- presença de valores extremos em várias variáveis numéricas.
-
-Como estratégia de tratamento, optou-se por aplicar **clipping** nas variáveis preditoras, limitando os valores aos intervalos definidos pelo IQR. Esta decisão permitiu reduzir o impacto de observações extremas sem eliminar registos completos do dataset.
-
-A variável-alvo **`CO(GT)`** não foi alterada, uma vez que pode refletir episódios reais de poluição atmosférica e corresponde ao valor que se pretende prever.
-
-## 3. Engenharia de Atributos (Feature Engineering)
-
-### 3.1. Transformações Realizadas
-
-A engenharia de atributos teve como objetivo tornar o dataset mais adequado à análise e à modelação futura, melhorando a representação temporal dos registos e preparando os dados para utilização em algoritmos de regressão.
-
-* **Encoding:** Não foi aplicado encoding diretamente às colunas originais `Date` e `Time`, uma vez que estas representam informação temporal bruta e gerariam demasiadas categorias. Em vez disso, foi criada a variável `timestamp` e, a partir desta, foram extraídas variáveis temporais derivadas mais interpretáveis. Posteriormente, foi aplicado **One-Hot Encoding** às variáveis categóricas `day_of_week` e `month`, transformando os diferentes dias da semana e meses em colunas binárias. Esta opção foi escolhida por permitir representar categorias sem introduzir uma ordem artificial entre elas.
-
-* **Escalonamento:** Foi aplicado **StandardScaler** às variáveis numéricas preditoras contínuas, com o objetivo de colocar os atributos numa escala comparável e reduzir o impacto de diferenças de magnitude entre variáveis. Esta transformação é relevante porque alguns algoritmos de modelação são sensíveis à escala dos atributos. A variável-alvo **`CO(GT)`** foi mantida na sua escala original, por corresponder ao valor que se pretende prever.
-
-### 3.2. Criação de Novos Atributos
-
-Como forma de acrescentar valor ao dataset original, foi criada a variável **`timestamp`** a partir da combinação das colunas `Date` e `Time`. Esta transformação foi considerada relevante porque permite representar o momento de cada medição de forma adequada, facilitando análises temporais e a criação de novos atributos mais úteis para a modelação.
-
-Numa fase posterior, foram ainda criadas novas variáveis a partir das colunas já existentes no dataset transformado:
-
-* **Nova Variável `is_weekend`:** variável binária criada a partir das colunas geradas pelo encoding do dia da semana, permitindo distinguir observações correspondentes a fins de semana.
-* **Nova Variável `is_warm_season`:** variável binária criada a partir das colunas geradas pelo encoding do mês, com o objetivo de representar períodos mais quentes do ano.
-* **Nova Variável `sensor_mean`:** variável contínua correspondente à média das leituras dos sensores químicos (`PT08.*`), funcionando como indicador agregado do comportamento dos sensores.
-
-Estas variáveis foram consideradas relevantes por poderem captar padrões temporais e estruturais adicionais, indo além da informação diretamente representada nas colunas originais. Posteriormente, foi analisada a correlação destas novas variáveis com a variável-alvo `CO(GT)`, de forma a verificar se acrescentam informação útil para a modelação.
-
-## 4. Dicionário de Dados Final (Pós-Processamento)
-
-A tabela seguinte apresenta as principais variáveis consideradas após a fase de limpeza, transformação e preparação dos dados.
-
-| Atributo | Tipo | Descrição |
-| :--- | :--- | :--- |
-| `CO(GT)` | Float | Variável-alvo: concentração de monóxido de carbono |
-| `PT08.S1(CO)` | Float | Leitura do sensor relacionada com CO |
-| `C6H6(GT)` | Float | Concentração de benzeno |
-| `PT08.S2(NMHC)` | Float | Leitura do sensor relacionada com NMHC |
-| `NOx(GT)` | Float | Concentração de óxidos de azoto |
-| `PT08.S3(NOx)` | Float | Leitura do sensor relacionada com NOx |
-| `NO2(GT)` | Float | Concentração de dióxido de azoto |
-| `PT08.S4(NO2)` | Float | Leitura do sensor relacionada com NO2 |
-| `PT08.S5(O3)` | Float | Leitura do sensor relacionada com O3 |
-| `T` | Float | Temperatura |
-| `RH` | Float | Humidade relativa |
-| `AH` | Float | Humidade absoluta |
-| `hour` | Float | Hora do dia, após transformação e escalonamento |
-| `day_of_week_*` | Binária | Conjunto de colunas binárias resultantes do One-Hot Encoding do dia da semana |
-| `month_*` | Binária | Conjunto de colunas binárias resultantes do One-Hot Encoding do mês |
-| `is_weekend` | Binária | Variável binária que identifica fins de semana |
-| `is_warm_season` | Binária | Variável binária que identifica meses mais quentes |
-| `sensor_mean` | Float | Média das leituras dos sensores químicos |
-
-As colunas totalmente vazias presentes no ficheiro original foram removidas na fase inicial de limpeza. A variável `NMHC(GT)` também foi removida devido à percentagem excessiva de valores em falta. As colunas `Date`, `Time` e `timestamp` deixaram de integrar o dataset final após a criação e transformação das variáveis temporais. Na etapa de seleção de atributos, foram ainda removidas as variáveis redundantes identificadas por apresentarem correlação absoluta demasiado elevada com outras variáveis preditoras.
-
-## 5. Conclusões da Fase de Exploração
-
-A fase de exploração permitiu compreender melhor a estrutura, distribuição e qualidade do dataset, aprofundando a análise iniciada no Milestone 1.
-
-As principais conclusões desta fase foram as seguintes:
-
-- o dataset é constituído maioritariamente por variáveis numéricas contínuas, complementadas inicialmente por variáveis temporais;
-- a variável-alvo `CO(GT)` apresenta uma distribuição assimétrica, com maior concentração de valores baixos e presença de possíveis outliers;
-- os atributos com maior relação com `CO(GT)` são sobretudo **sensores químicos e outros poluentes**, com destaque para `C6H6(GT)`, `PT08.S2(NMHC)`, `PT08.S1(CO)`, `PT08.S5(O3)` e `NOx(GT)`;
-- a variável `PT08.S3(NOx)` apresenta uma relação inversa forte com `CO(GT)`, sendo uma das relações mais distintivas da análise;
-- as variáveis meteorológicas (`T`, `RH` e `AH`) revelam baixa capacidade explicativa isolada para a previsão de `CO(GT)`;
-- existiam problemas relevantes de qualidade dos dados, sobretudo associados a missing values codificados como `-200`, que foram devidamente tratados;
-- a estratégia de tratamento de missing values permitiu eliminar os nulos do dataset final, mantendo a informação mais relevante para a modelação;
-- a verificação dos tipos de dados e o tratamento dos outliers contribuíram para tornar o dataset mais consistente e menos sensível a observações extremas;
-- a criação e transformação de atributos temporais, bem como a definição de variáveis derivadas adicionais, enriqueceram a representação dos dados;
-- a seleção de atributos permitiu remover variáveis redundantes e reduzir problemas de multicolinearidade;
-- o dataset processado foi exportado para ficheiro CSV, ficando preparado para a fase seguinte do projeto.
-
-De forma geral, os dados apresentam qualidade suficiente para avançar para as próximas etapas do projeto, nomeadamente treino, comparação e avaliação de modelos preditivos.
-
----
-
-*Data de última atualização: [DD/MM/AAAA]*
+**Instituição:** Coimbra Business School | ISCAC  
+**Curso:** Licenciatura em Ciência de Dados para a Gestão  
+**Unidade Curricular:** Projeto em Ciência de Dados  
+**Professor Responsável:** Dora Melo (`dmelo@iscac.pt`)
