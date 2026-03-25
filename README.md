@@ -24,10 +24,16 @@ A qualidade do ar é um tema relevante para a saúde pública, para a gestão am
 Neste projeto pretende-se estudar a previsão da concentração de monóxido de carbono em ambiente urbano, procurando avaliar se é possível estimar esse valor com base em informação recolhida em contexto de monitorização da qualidade do ar. O problema é relevante porque a antecipação de episódios de maior poluição pode apoiar ações de prevenção, vigilância e mitigação.
 
 ### Objetivos do Projeto
-* **Objetivo 1:** Até ao final da Milestone 2, obter um conjunto de dados limpo e consistente para modelação, sem valores em falta nas variáveis utilizadas, com atributos temporais derivados e com todas as transformações devidamente documentadas.
-* **Objetivo 2:** Até ao final da Milestone 3, treinar e avaliar pelo menos três modelos de regressão para prever a concentração de monóxido de carbono, recorrendo às métricas RMSE, MAE e R².
-* **Objetivo 3:** Até ao final da Milestone 3, identificar um modelo com desempenho superior a um baseline simples, evidenciando capacidade preditiva relevante para o problema em estudo.
-* **Objetivo 4:** Até ao final da Milestone 4, identificar os atributos com maior contributo para a previsão e apresentar conclusões que apoiem a interpretação do fenómeno de poluição atmosférica analisado.
+
+* **S (Specific):** Prever a concentração de monóxido de carbono (`CO(GT)`) em ambiente urbano, com base em dados históricos de qualidade do ar, sensores químicos e variáveis meteorológicas.
+
+* **M (Measurable):** Avaliar o desempenho dos modelos de regressão através de métricas como **RMSE**, **MAE** e **R²**, comparando diferentes algoritmos de machine learning com um modelo de referência simples.
+
+* **A (Achievable):** Utilizar um dataset real de monitorização da qualidade do ar, com registos horários e variáveis adequadas à aplicação de técnicas de análise de dados, engenharia de atributos e modelação preditiva.
+
+* **R (Relevant):** Contribuir para a compreensão dos fatores associados à concentração de monóxido de carbono e apoiar a monitorização da poluição atmosférica, com potencial utilidade em contextos de saúde pública e gestão ambiental.
+
+* **T (Time-bound):** Desenvolver, preparar, treinar e avaliar os modelos preditivos até ao final da unidade curricular, de acordo com o cronograma definido nas diferentes Milestones do projeto.
 
 ### Questões de Investigação
 * É possível prever a concentração de monóxido de carbono com desempenho útil a partir dos dados disponíveis?
