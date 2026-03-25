@@ -47,7 +47,7 @@ A exploração, limpeza e preparação inicial dos dados têm sido desenvolvidas
 * Plataforma: Kaggle
 * Dataset no Kaggle: AirQualityUCI
 * Ligação do dataset: https://www.kaggle.com/datasets/jhonan/airqualityuci
-* Ligação do notebook: https://www.kaggle.com/code/tiagosimoesrodrigues/airquality-dataset
+* Ligação do notebook: (https://www.kaggle.com/code/rodrigopedro20/airquality-dataset)
 
 ## 2. Exploração (Milestone 2)
 
