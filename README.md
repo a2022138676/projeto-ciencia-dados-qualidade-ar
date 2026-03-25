@@ -73,9 +73,8 @@ Até ao momento, na Milestone 2, foram desenvolvidas as seguintes etapas:
 * Registo técnico e justificação das decisões em `docs/M2_exploracao.md`
 
 ### Principais Conclusões (EDA)
-> Sugestão: inserir aqui o heatmap de correlação ou um dos scatter plots mais relevantes do projeto.
 
-![Heatmap da matriz de correlação](reports/figures/heatmap_correlacao.png)
+<img width="955" height="659" alt="image" src="https://github.com/user-attachments/assets/821abe2f-8fd1-4034-9287-68232033b0f5" /> 
 
 *Figura 1 — Heatmap da matriz de correlação entre as variáveis numéricas do dataset.*
 
