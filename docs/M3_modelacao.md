@@ -38,9 +38,9 @@ Como ponto de partida, foi utilizado um modelo simples de referência com o obje
 Este modelo não utiliza as variáveis preditoras, limitando-se a prever sempre o valor médio da variável-alvo observada no conjunto de treino.
 
 * **Resultado (Teste):**
-  - RMSE: [1.3576]  
-  - MAE: [1.0831]  
-  - R²: [-0.0196]  
+  - RMSE: 1.3576  
+  - MAE: 1.0831  
+  - R²: -0.0196  
 
 As métricas obtidas por este modelo constituem o referencial mínimo de desempenho. Assim, todos os modelos mais avançados deverão apresentar melhorias face a este baseline, especialmente em termos de redução do erro (RMSE e MAE) e aumento da capacidade explicativa (R²).
 
@@ -60,25 +60,29 @@ Os modelos selecionados incluem abordagens lineares e baseadas em ensemble:
 
 | Algoritmo | RMSE (Treino) | RMSE (Teste) | MAE (Teste) | R² (Teste) |
 | :--- | :--- | :--- | :--- | :--- |
-| Regressão Linear | X | X | X | X |
-| Random Forest | X | X | X | X |
-| Gradient Boosting | X | X | X | X |
+| Regressão Linear | 0.4968 | 0.7649 | 0.6174 | 0.6764 |
+| Random Forest | 0.1345 | 0.5387 | 0.3571 | 0.8395 |
+| Gradient Boosting | 0.3366 | 0.5071 | 0.3438 | 0.8578 |
 
 #### Análise
 
-Os resultados indicam que os modelos baseados em ensemble apresentam melhor desempenho face ao baseline e ao modelo linear.
+Os resultados demonstram que todos os modelos testados superam significativamente o modelo baseline, evidenciando a capacidade dos algoritmos de machine learning em capturar padrões relevantes nos dados.
 
-[ESCREVE AQUI: qual foi o melhor modelo e porquê]
+Os modelos baseados em ensemble, nomeadamente o **Random Forest** e o **Gradient Boosting**, destacaram-se pelo seu desempenho superior, apresentando menores valores de erro (RMSE e MAE) e maior capacidade explicativa (R²).
 
-Foram também observados sinais de [overfitting/generalização], dependendo da diferença entre os resultados de treino e teste.
+O modelo **Gradient Boosting** revelou-se o mais eficaz, apresentando o menor RMSE e o maior R² no conjunto de teste, indicando uma melhor capacidade de generalização.
+
+O modelo **Random Forest** apresentou também um desempenho elevado, embora ligeiramente inferior ao Gradient Boosting. No entanto, a diferença significativa entre o erro de treino e de teste sugere possíveis sinais de **overfitting**.
+
+Por outro lado, o modelo de **Regressão Linear** apresentou um desempenho inferior, sugerindo que as relações entre as variáveis não são exclusivamente lineares e que modelos mais complexos são mais adequados para este problema.
 
 ---
 
 ## 3. Otimização (Tuning)
 
-Nesta fase não foi realizada otimização de hiperparâmetros, uma vez que ainda não foram treinados modelos candidatos.
+Nesta fase não foi ainda realizada otimização de hiperparâmetros.
 
-Esta etapa será desenvolvida após a implementação dos primeiros modelos de regressão.
+Esta etapa será desenvolvida após a identificação do modelo com melhor desempenho, com o objetivo de melhorar ainda mais os resultados obtidos.
 
 ---
 
@@ -94,21 +98,17 @@ Não aplicável nesta fase, uma vez que ainda não foi selecionado um modelo fin
 
 Não aplicável nesta fase.
 
-A análise de importância dos atributos será realizada após o treino dos modelos candidatos.
+A análise de importância dos atributos será realizada após o treino do modelo final.
 
 ---
 
 ## 5. Conclusão da Fase de Modelação
 
-Até ao momento, foi definida a base metodológica da modelação, incluindo:
+Até ao momento, foi definida a base metodológica da modelação e foram testados diferentes modelos de regressão.
 
-- partição dos dados em treino e teste com abordagem temporal  
-- definição de métricas de avaliação adequadas ao problema de regressão  
-- construção de um pipeline de pré-processamento sem fuga de informação  
-- definição de estratégia de validação interna  
-- implementação do modelo baseline  
+Os resultados demonstram que modelos baseados em ensemble apresentam melhor desempenho face ao modelo baseline e ao modelo linear, destacando-se o Gradient Boosting como a melhor abordagem nesta fase.
 
-O sistema encontra-se preparado para a fase seguinte, que consistirá no treino, comparação e avaliação de modelos de regressão mais avançados.
+O sistema encontra-se preparado para a fase seguinte, que consistirá na otimização do modelo selecionado e na sua avaliação final.
 
 ---
 
