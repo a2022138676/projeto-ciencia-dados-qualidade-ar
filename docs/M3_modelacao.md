@@ -48,9 +48,29 @@ As métricas obtidas por este modelo constituem o referencial mínimo de desempe
 
 ### 2.2. Modelos Candidatos
 
-Ainda não foram testados modelos candidatos nesta fase do projeto.
+Foram testados diferentes algoritmos de regressão com o objetivo de superar o desempenho do modelo baseline.
 
-A seleção e comparação de algoritmos de machine learning será realizada numa etapa posterior.
+Os modelos selecionados incluem abordagens lineares e baseadas em ensemble:
+
+- Regressão Linear — modelo simples e interpretável  
+- Random Forest — algoritmo baseado em múltiplas árvores de decisão  
+- Gradient Boosting — modelo de ensemble com elevada capacidade preditiva  
+
+#### Resultados obtidos
+
+| Algoritmo | RMSE (Treino) | RMSE (Teste) | MAE (Teste) | R² (Teste) |
+| :--- | :--- | :--- | :--- | :--- |
+| Regressão Linear | X | X | X | X |
+| Random Forest | X | X | X | X |
+| Gradient Boosting | X | X | X | X |
+
+#### Análise
+
+Os resultados indicam que os modelos baseados em ensemble apresentam melhor desempenho face ao baseline e ao modelo linear.
+
+[ESCREVE AQUI: qual foi o melhor modelo e porquê]
+
+Foram também observados sinais de [overfitting/generalização], dependendo da diferença entre os resultados de treino e teste.
 
 ---
 
