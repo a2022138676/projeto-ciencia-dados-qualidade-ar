@@ -170,10 +170,4 @@ Principais conclusões:
 
 ---
 
-### Nota Metodológica
-
-Importa referir que as transformações realizadas nesta fase foram efetuadas sobre o conjunto de dados completo com fins exploratórios. Na fase de modelação, estas operações serão aplicadas exclusivamente ao conjunto de treino, de forma a evitar fugas de informação (data leakage) e garantir uma avaliação correta dos modelos.
-
----
-
 *Data de última atualização: 20/04/2026*
