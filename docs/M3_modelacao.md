@@ -10,7 +10,7 @@ Dado que o dataset possui uma componente temporal, a divisão foi realizada de f
 
 Esta abordagem permite simular um cenário real de previsão e assegura o isolamento dos dados de teste, evitando fugas de informação (*data leakage*).
 
-Adicionalmente, foi utilizada validação cruzada com `TimeSeriesSplit` no conjunto de treino, garantindo maior robustez dos resultados e reduzindo a dependência de uma única divisão dos dados. Desta forma, as conclusões obtidas não dependem apenas de uma partição “afortunada”, mas de um processo mais estável e repetível.
+Adicionalmente, foi utilizada validação cruzada com **`TimeSeriesSplit`** no conjunto de treino, garantindo maior robustez dos resultados e reduzindo a dependência de uma única divisão dos dados. Desta forma, as conclusões obtidas não dependem apenas de uma partição “afortunada”, mas de um processo mais estável e repetível.
 
 Antes do treino, foi ainda definido um pipeline de pré-processamento com o objetivo de garantir consistência na transformação dos dados. Este pipeline inclui:
 
@@ -19,7 +19,7 @@ Antes do treino, foi ainda definido um pipeline de pré-processamento com o obje
 - codificação de variáveis categóricas com One-Hot Encoding  
 - escalonamento das variáveis numéricas com StandardScaler  
 
-Todas estas transformações são ajustadas exclusivamente com base no conjunto de treino e posteriormente aplicadas ao conjunto de teste.
+Todas estas transformações são ajustadas exclusivamente com base no conjunto de treino e posteriormente aplicadas ao conjunto de teste, garantindo coerência entre o relatório e o notebook `2.0_modelacao_treino.ipynb`.
 
 * **Métrica de Sucesso:**  
 Tratando-se de um problema de regressão, foi escolhida como métrica principal o **RMSE (Root Mean Squared Error)**.
@@ -69,7 +69,7 @@ Os resultados demonstram que todos os modelos superam significativamente o basel
 
 Os modelos baseados em ensemble apresentaram melhor desempenho face ao modelo linear, o que sugere que as relações entre as variáveis não são puramente lineares.
 
-O modelo **Gradient Boosting** destacou-se como o melhor, apresentando o menor erro no conjunto de teste e o melhor equilíbrio entre desempenho de treino e de teste, revelando maior capacidade de generalização.
+O modelo **Gradient Boosting** destacou-se como o melhor nesta fase inicial, apresentando o menor erro no conjunto de teste e o melhor equilíbrio entre desempenho de treino e de teste, revelando maior capacidade de generalização.
 
 O modelo **Random Forest** apresentou desempenho muito forte no treino, mas com degradação no teste, o que constitui evidência de **overfitting**.
 
@@ -79,17 +79,33 @@ Comparativamente ao baseline, a maior complexidade dos modelos candidatos trouxe
 
 ## 3. Otimização (Tuning)
 
-Nesta fase não foi ainda realizada otimização de hiperparâmetros.
+Após a comparação inicial entre os modelos candidatos, foi selecionado o **Gradient Boosting** para a fase de otimização, por ter apresentado o melhor desempenho no conjunto de teste e a melhor capacidade de generalização.
 
-A escolha do modelo foi baseada na sua capacidade de generalização, tendo sido identificado o **Gradient Boosting** como o melhor candidato para otimização futura.
+* **Técnica Utilizada:**  
+Foi utilizado `GridSearchCV` com validação cruzada baseada em `TimeSeriesSplit` (`n_splits=5`), garantindo coerência com a natureza temporal do problema.
 
-Como trabalho seguinte, prevê-se a utilização de técnicas como **GridSearchCV** ou **RandomizedSearchCV** para ajuste de parâmetros como:
+O espaço de pesquisa incluiu os seguintes hiperparâmetros:
+- `n_estimators`
+- `learning_rate`
+- `max_depth`
 
-- número de estimadores  
-- taxa de aprendizagem  
-- profundidade das árvores  
+* **Configuração ideal encontrada:**  
+- `n_estimators`: **100**  
+- `learning_rate`: **0.05**  
+- `max_depth`: **3**
 
-Espera-se que esta etapa permita melhorar ainda mais o desempenho do modelo selecionado, mantendo o equilíbrio entre erro de treino e erro de teste.
+* **Validação Cruzada:**  
+O melhor modelo apresentou:
+- **RMSE médio na validação cruzada:** **0.5445**  
+- **Desvio padrão do RMSE:** **0.2467**
+
+* **Melhoria obtida:**  
+Comparando o modelo base com o modelo otimizado, observou-se a seguinte evolução no conjunto de teste:
+- RMSE: de **0.5071** para **0.4806**
+- MAE: de **0.3438** para **0.3210**
+- R²: de **0.8578** para **0.8722**
+
+A otimização permitiu refinar o modelo selecionado, melhorando o desempenho no conjunto de teste e reforçando a sua robustez e estabilidade. Embora a melhoria não seja extremamente elevada, é consistente nas três métricas consideradas, o que consolida a escolha do Gradient Boosting como principal candidato a modelo final.
 
 ## 4. Avaliação do Modelo Final
 
@@ -124,9 +140,11 @@ O modelo **Gradient Boosting** revelou-se o mais adequado nesta fase, apresentan
 
 A comparação com o modelo baseline evidenciou melhorias significativas, justificando a utilização de modelos mais complexos. Em termos práticos, a complexidade adicional dos modelos de ensemble traduziu-se em ganhos reais de desempenho.
 
-Apesar dos bons resultados, foram identificadas limitações na previsão de valores extremos, o que indica margem para melhoria futura através de otimização de hiperparâmetros e análise mais aprofundada dos erros.
+A fase de otimização permitiu ainda melhorar o modelo selecionado, reduzindo o erro no conjunto de teste e aumentando a capacidade explicativa, o que reforça a robustez da solução escolhida.
 
-De forma geral, o modelo encontra-se suficientemente robusto para avançar para a fase seguinte de otimização e refinamento, mantendo coerência entre o relatório e o notebook `2.0_modelacao_treino.ipynb`.
+Apesar dos bons resultados, foram identificadas limitações na previsão de valores extremos, o que indica margem para melhoria futura através de otimização adicional de hiperparâmetros, análise mais aprofundada dos erros e eventual reforço dos dados disponíveis.
+
+De forma geral, o modelo encontra-se suficientemente robusto para avançar para a fase seguinte de refinamento, mantendo coerência entre o relatório e o notebook `2.0_modelacao_treino.ipynb`.
 
 ---
 
