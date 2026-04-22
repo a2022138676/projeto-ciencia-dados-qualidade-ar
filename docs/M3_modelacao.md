@@ -2,7 +2,7 @@
 
 ## 1. Estratégia de Modelação
 
-Nesta fase foram preparados os dados e definida a metodologia de avaliação para os modelos preditivos, com o objetivo de prever a concentração de monóxido de carbono (`CO(GT)`).
+Nesta fase foram preparados os dados e definida a metodologia de avaliação dos modelos preditivos, com o objetivo de prever a concentração de monóxido de carbono (`CO(GT)`).
 
 * **Divisão do dataset:**  
 Foi utilizada uma divisão de **80% para treino** e **20% para teste**.  
@@ -14,10 +14,10 @@ Adicionalmente, foi utilizada validação cruzada com **`TimeSeriesSplit`** no c
 
 Antes do treino, foi ainda definido um pipeline de pré-processamento com o objetivo de garantir consistência na transformação dos dados. Este pipeline inclui:
 
-- imputação de valores em falta com a mediana nas variáveis numéricas  
-- tratamento de outliers com base no método do IQR  
-- codificação de variáveis categóricas com One-Hot Encoding  
-- escalonamento das variáveis numéricas com StandardScaler  
+- imputação de valores em falta com a mediana nas variáveis numéricas;  
+- tratamento de outliers com base no método do IQR;  
+- codificação de variáveis categóricas com One-Hot Encoding;  
+- escalonamento das variáveis numéricas com StandardScaler.  
 
 Todas estas transformações são ajustadas exclusivamente com base no conjunto de treino e posteriormente aplicadas ao conjunto de teste, garantindo coerência entre o relatório e o notebook `2.0_modelacao_treino.ipynb`.
 
@@ -28,10 +28,12 @@ O RMSE foi privilegiado em detrimento do MAE por penalizar mais fortemente erros
 
 Como métricas complementares foram utilizadas:
 
-- **MAE (Mean Absolute Error)** — permite interpretar diretamente o erro médio em unidades da variável-alvo  
-- **R² (Coeficiente de determinação)** — avalia a capacidade explicativa do modelo  
+- **MAE (Mean Absolute Error)** — permite interpretar diretamente o erro médio em unidades da variável-alvo;  
+- **R² (Coeficiente de determinação)** — avalia a capacidade explicativa do modelo.  
 
 Esta combinação permite avaliar simultaneamente precisão, robustez e qualidade global das previsões.
+
+---
 
 ## 2. Experiências Realizadas
 
@@ -56,8 +58,8 @@ Foram testados diferentes algoritmos de regressão com o objetivo de superar o d
 
 A seleção dos modelos teve em conta a diversidade de abordagens e a sua adequação ao problema:
 
-- **modelo linear** (*Regressão Linear*), como referência simples e interpretável  
-- **modelos de ensemble** (*Random Forest* e *Gradient Boosting*), por serem capazes de capturar relações não lineares e interações complexas entre variáveis  
+- **modelo linear** (*Regressão Linear*), como referência simples e interpretável;  
+- **modelos de ensemble** (*Random Forest* e *Gradient Boosting*), por serem capazes de captar relações não lineares e interações mais complexas entre variáveis.  
 
 | Algoritmo | Parâmetros Base | Métrica (Treino) | Métrica (Teste) | Notas |
 | :--- | :--- | :--- | :--- | :--- |
@@ -65,7 +67,7 @@ A seleção dos modelos teve em conta a diversidade de abordagens e a sua adequa
 | Random Forest | `n_estimators=100` | RMSE = 0.1345 | RMSE = 0.5387 | Evidência de overfitting |
 | Gradient Boosting | `default` | RMSE = 0.3366 | RMSE = 0.5071 | Melhor capacidade de generalização |
 
-Os resultados demonstram que todos os modelos superam significativamente o baseline, evidenciando que a utilização de algoritmos de machine learning acrescenta valor real ao problema.
+Os resultados demonstram que todos os modelos superam significativamente o baseline, evidenciando que a utilização de algoritmos de *machine learning* acrescenta valor real ao problema.
 
 Os modelos baseados em ensemble apresentaram melhor desempenho face ao modelo linear, o que sugere que as relações entre as variáveis não são puramente lineares.
 
@@ -73,9 +75,11 @@ O modelo **Gradient Boosting** destacou-se como o melhor nesta fase inicial, apr
 
 O modelo **Random Forest** apresentou desempenho muito forte no treino, mas com degradação no teste, o que constitui evidência de **overfitting**.
 
-Já a **Regressão Linear** apresentou desempenho inferior aos modelos de ensemble, sugerindo **underfitting parcial**, ou seja, capacidade limitada para capturar a complexidade do fenómeno em estudo.
+Já a **Regressão Linear** apresentou desempenho inferior aos modelos de ensemble, sugerindo **underfitting parcial**, ou seja, uma capacidade limitada para captar a complexidade do fenómeno em estudo.
 
 Comparativamente ao baseline, a maior complexidade dos modelos candidatos trouxe benefícios estatísticos claros, justificando o custo computacional adicional.
+
+---
 
 ## 3. Otimização (Tuning)
 
@@ -85,9 +89,9 @@ Após a comparação inicial entre os modelos candidatos, foi selecionado o **Gr
 Foi utilizado `GridSearchCV` com validação cruzada baseada em `TimeSeriesSplit` (`n_splits=5`), garantindo coerência com a natureza temporal do problema.
 
 O espaço de pesquisa incluiu os seguintes hiperparâmetros:
-- `n_estimators`
-- `learning_rate`
-- `max_depth`
+- `n_estimators`;  
+- `learning_rate`;  
+- `max_depth`.  
 
 * **Configuração ideal encontrada:**  
 - `n_estimators`: **100**  
@@ -101,20 +105,22 @@ O melhor modelo apresentou:
 
 * **Melhoria obtida:**  
 Comparando o modelo base com o modelo otimizado, observou-se a seguinte evolução no conjunto de teste:
-- RMSE: de **0.5071** para **0.4806**
-- MAE: de **0.3438** para **0.3210**
-- R²: de **0.8578** para **0.8722**
+- RMSE: de **0.5071** para **0.4806**;  
+- MAE: de **0.3438** para **0.3210**;  
+- R²: de **0.8578** para **0.8722**.  
 
-A otimização permitiu refinar o modelo selecionado, melhorando o desempenho no conjunto de teste e reforçando a sua robustez e estabilidade. Embora a melhoria não seja extremamente elevada, é consistente nas três métricas consideradas, o que consolida a escolha do Gradient Boosting como principal candidato a modelo final.
+A otimização permitiu refinar o modelo selecionado, melhorando o desempenho no conjunto de teste e reforçando a sua robustez e estabilidade. Embora a melhoria não seja muito elevada, é consistente nas três métricas consideradas, o que consolida a escolha do Gradient Boosting como principal candidato a modelo final.
+
+---
 
 ## 4. Avaliação do Modelo Final
 
 ### 4.1. Matriz de Confusão / Erros
 
-Tratando-se de um problema de regressão, a avaliação foi feita com base na análise dos erros e resíduos (diferença entre valores reais e previstos), bem como na comparação entre desempenho de treino e de teste.
+Tratando-se de um problema de regressão, a avaliação foi feita com base na análise dos erros e resíduos (diferença entre valores reais e previstos), bem como na comparação entre o desempenho de treino e de teste.
 
 > **Análise:**  
-Verificou-se que os maiores erros se concentram nos valores extremos da variável `CO(GT)`, indicando maior dificuldade dos modelos em prever situações de elevada variabilidade na qualidade do ar.
+Verificou-se que os maiores erros se concentram nos valores mais extremos da variável `CO(GT)`, indicando maior dificuldade dos modelos em prever situações de elevada variabilidade na qualidade do ar.
 
 A comparação entre treino e teste revelou que:
 
@@ -122,19 +128,21 @@ A comparação entre treino e teste revelou que:
 - o **Gradient Boosting** apresenta melhor equilíbrio entre treino e teste, sendo o modelo com melhor capacidade de generalização;  
 - a **Regressão Linear** apresenta desempenho mais fraco em ambos os conjuntos, sugerindo capacidade preditiva insuficiente para modelar a complexidade dos dados.  
 
-Foram ainda geradas **curvas de aprendizagem** para o modelo Gradient Boosting, permitindo analisar a evolução do erro à medida que o número de observações aumenta. Estas curvas sugerem comportamento estável e reforçam a ideia de que este modelo generaliza melhor do que os restantes candidatos, embora ainda possa beneficiar de otimização adicional e, eventualmente, de mais dados.
+Foram ainda geradas **curvas de aprendizagem** para o modelo Gradient Boosting, permitindo analisar a evolução do erro à medida que o número de observações aumenta. Estas curvas sugerem um comportamento globalmente estável e reforçam a ideia de que este modelo generaliza melhor do que os restantes candidatos, embora ainda possa beneficiar de otimização adicional e, eventualmente, de mais dados.
 
 ### 4.2. Importância dos Atributos (Feature Importance)
 
-Nesta fase não foi ainda realizada uma análise formal de importância dos atributos com base no modelo final.
+Nesta fase não foi ainda realizada uma análise formal e detalhada da importância dos atributos com base no modelo final no relatório.
 
-No entanto, com base na análise exploratória desenvolvida no Milestone 2, é expectável que variáveis relacionadas com sensores químicos e poluentes atmosféricos — como `C6H6(GT)`, `PT08.S2(NMHC)` e `PT08.S1(CO)` — tenham relevância elevada na previsão da variável-alvo.
+No entanto, com base na análise exploratória desenvolvida no Milestone 2, é expectável que variáveis relacionadas com sensores químicos e poluentes atmosféricos — como `C6H6(GT)`, `PT08.S2(NMHC)` e `PT08.S1(CO)` — apresentem relevância elevada na previsão da variável-alvo.
 
-A análise formal da importância dos atributos será desenvolvida na continuação da modelação, garantindo coerência entre os resultados do relatório e o notebook.
+A análise visual da importância dos atributos foi gerada no notebook de modelação e exportada para a pasta `reports/figures/`, servindo como suporte adicional à interpretação do modelo final.
+
+---
 
 ## 5. Conclusão da Fase de Modelação
 
-Os resultados obtidos demonstram que é possível prever a concentração de monóxido de carbono com bom nível de precisão utilizando modelos de machine learning.
+Os resultados obtidos demonstram que é possível prever a concentração de monóxido de carbono com um bom nível de precisão utilizando modelos de *machine learning*.
 
 O modelo **Gradient Boosting** revelou-se o mais adequado nesta fase, apresentando o melhor compromisso entre erro e capacidade de generalização.
 
