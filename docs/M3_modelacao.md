@@ -183,4 +183,4 @@ De forma global, considera-se que o **Gradient Boosting otimizado** se encontra 
 
 ---
 
-*Data de última atualização: 22/04/2026*
+*Data de última atualização: 06/05/2026*
