@@ -1,9 +1,9 @@
 # Milestone 1: Iniciação e Definição do Projeto
 
 ## 1. Descrição Detalhada do Problema
-Este projeto centra-se na **monitorização da qualidade do ar**, um tema relevante nos domínios da **saúde pública**, da **gestão ambiental** e do **planeamento urbano**. A poluição atmosférica afeta diretamente o bem-estar da população, sendo um fator crítico para a definição de medidas de prevenção, mitigação e monitorização contínua.
+Este projeto está centrado na **monitorização da qualidade do ar**, um tema relevante nos domínios da **saúde pública**, da **gestão ambiental** e do **planeamento urbano**. A poluição atmosférica afeta diretamente o bem-estar da população, sendo um fator crítico para a definição de medidas de prevenção, de diminuição dos riscos ambientais e de monitorização contínua.
 
-O conjunto de dados selecionado, **AirQualityUCI**, contém medições **horárias** de poluentes atmosféricos, como `CO(GT)`, `NOx(GT)` e `NO2(GT)`, bem como leituras de sensores químicos (`PT08.*`) e variáveis meteorológicas, nomeadamente temperatura (`T`), humidade relativa (`RH`) e humidade absoluta (`AH`).
+O conjunto de dados selecionado, **AirQualityUCI**, contém medições de poluentes atmosféricos, como `CO(GT)`, `NOx(GT)` e `NO2(GT)`, bem como leituras de sensores químicos (`PT08.*`) e variáveis meteorológicas, nomeadamente a temperatura (`T`), a humidade relativa (`RH`) e a humidade absoluta (`AH`).
 
 Uma vez que o dataset não apresenta um índice global único de “qualidade do ar”, o projeto incide sobre um indicador quantitativo de poluição diretamente presente nos dados. Para a abordagem de **aprendizagem supervisionada do tipo regressão**, foi definida como variável-alvo a coluna **`CO(GT)`**, por corresponder a uma medição de referência de um poluente atmosférico e por permitir a formulação de objetivos concretos de previsão.
 
