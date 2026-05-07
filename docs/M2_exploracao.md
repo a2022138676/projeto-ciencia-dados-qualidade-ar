@@ -156,4 +156,4 @@ No final desta fase, o dataset estava limpo, organizado e pronto para a fase de 
 
 ---
 
-*Data de última atualização: 06/05/2026*
+*Data de última atualização: 07/05/2026*
