@@ -1,38 +1,36 @@
 # Milestone 1: Iniciação e Definição do Projeto
 
 ## 1. Descrição Detalhada do Problema
-Este projeto está centrado na **monitorização da qualidade do ar**, um tema relevante nos domínios da **saúde pública**, da **gestão ambiental** e do **planeamento urbano**. A poluição atmosférica afeta diretamente o bem-estar da população, sendo um fator crítico para a definição de medidas de prevenção, de diminuição dos riscos ambientais e de monitorização contínua.
+O nosso projeto foca-se na **monitorização da qualidade do ar**, um tema que nos pareceu bastante relevante e atual. A poluição atmosférica é algo que nos preocupa cada vez mais e se nada for feito, podemos estar a caminhar para um planeta cada vez mais inabitável. Foi por isso que, de todos os datasets que estavam disponíveis na lista fornecida pela professora, escolhemos este porque é o que nos parecia mais interessante e ligado a algo que realmente importa nos dias de hoje.
 
-O conjunto de dados selecionado, **AirQualityUCI**, contém medições de poluentes atmosféricos, como `CO(GT)`, `NOx(GT)` e `NO2(GT)`, bem como leituras de sensores químicos (`PT08.*`) e variáveis meteorológicas, nomeadamente a temperatura (`T`), a humidade relativa (`RH`) e a humidade absoluta (`AH`).
+O dataset escolhido, **AirQualityUCI**, contém medições de poluentes atmosféricos, como `CO(GT)`, `NOx(GT)` e `NO2(GT)`, leituras de sensores químicos (`PT08.*`) e variáveis meteorológicas como temperatura (`T`), a humidade relativa (`RH`) e a humidade absoluta (`AH`). Quando abrimos o ficheiro pela primeira vez, uma das principais coisas que notámos foi a existência de algumas colunas completamente vazias, o que pareceu-nos estranho e fez-nos perceber que o dataset precisava de tratamento antes de ser utilizado.
 
-Uma vez que o dataset não apresenta um índice global único de “qualidade do ar”, o projeto incide sobre um indicador quantitativo de poluição diretamente presente nos dados. Para a abordagem de **aprendizagem supervisionada do tipo regressão**, foi definida como variável-alvo a coluna **`CO(GT)`**, por corresponder a uma medição de referência de um poluente atmosférico e por permitir a formulação de objetivos concretos de previsão.
+Como o dataset não tem nenhum índice global único de qualidade do ar, definimos como variável-alvo a concentração de monóxido de carbono **`CO(GT)`**, por ser uma medição de referência diretamente disponível nos dados e por permitir trabalhar com um problema de regressão supervisionada. 
+
+O nosso objetivo com este projeto não é apenas obter boas métricas mas também que qualquer pessoa que veja o trabalho consiga perceber o que fizemos e fique a conhecer melhor este tema. O dataset em si não é recente nem global, mas já permite tirar conclusões interessantes sobre a poluição atmosférica e o que a influencia.
 
 ### Perguntas de Investigação
-- Que padrões horários e/ou diários podem ser observados na concentração de `CO(GT)` ao longo do período analisado?
-- Que variáveis, nomeadamente os sensores `PT08.*` e as variáveis meteorológicas `T`, `RH` e `AH`, apresentam maior relação com `CO(GT)`?
-- É possível prever `CO(GT)` com desempenho superior a um modelo de referência simples, utilizando modelos de regressão?
+- Existem padrões horários ou diários na concentração de `CO(GT)` ao longo do período analisado?
+- Quais as variáveis, nomeadamente os sensores `PT08.*` e as variáveis meteorológicas `T`, `RH` e `AH`, que têm maior relação com `CO(GT)`?
+- É possível prever `CO(GT)` com um erro claramente inferior ao de um modelo simples que preveja sempre a média?
 
 ## 2. Objetivos SMART
 
-**Objetivo 1 (M1):** Até **24/02/2026**, estruturar o repositório GitHub e documentar o plano do projeto, garantindo a existência de uma estrutura organizada, de um `README.md` inicial, do ficheiro `docs/M1_iniciacao.md` preenchido e de um notebook no Kaggle com o carregamento do conjunto de dados e a respetiva inspeção inicial.  
-**Métrica de sucesso:** criação da release/tag correspondente ao M1 no GitHub e notebook executado do início ao fim sem erros.
+**Objetivo Principal:** Até **18/04/2026**, desenvolver um modelo de regressão capaz de prever a concentração de monóxido de carbono `CO(GT)` com uma melhoria mínima de **15% em MAE ou RMSE** face a um modelo de referência simples (que prevê sempre a média), utilizando o dataset **AirQualityUCI** e as bibliotecas disponíveis em python.
 
-**Objetivo 2 (M2):** Até **24/03/2026**, preparar e explorar o conjunto de dados **AirQualityUCI** de forma reprodutível, incluindo a leitura correta do ficheiro CSV (`sep=';'` e `decimal=','`), a remoção de colunas totalmente vazias, a conversão de `Date` e `Time` para uma variável temporal e a substituição do código de valores em falta `-200` por `NaN`.  
-**Métrica de sucesso:** produção de uma tabela com a percentagem de valores em falta por variável, realização de análise exploratória com visualizações e registo das principais conclusões, bem como geração do conjunto de dados processado, quando aplicável.
-
-**Objetivo 3 (M3):** Até **21/04/2026**, desenvolver e comparar **pelo menos três modelos de regressão** para prever **`CO(GT)`**, recorrendo às métricas **MAE** e **RMSE**, bem como ao **R²** como métrica complementar, e comparando os resultados com um modelo de referência simples.  
-**Métrica de sucesso:** obtenção de uma melhoria mínima de **15% em MAE ou RMSE** face ao modelo de referência, num conjunto de teste previamente definido.
+**Métrica de sucesso:** redução de pelo menos 15% no erro de previsão (RMSE ou MAE) no conjunto de teste, comparando o melhor modelo desenvolvido com o modelo de referência.
 
 ## 3. Metodologia de Gestão (PBL)
 
 ### Divisão de Tarefas
-- **Rodrigo Pedro:** responsável pela engenharia de dados, incluindo a importação do dataset no Kaggle, leitura correta do ficheiro CSV, limpeza estrutural, conversão de `-200` para `NaN`, criação da variável temporal (`timestamp`) e organização do repositório.
-- **Tiago Rodrigues:** responsável pela análise exploratória dos dados, visualizações, interpretação de resultados, documentação em `docs/` e atualização do `README.md`.
+No início tivemos alguma dificuldade em perceber exatamente o que era para fazer e quais os pontos mais importantes do trabalho. Com o tempo fomos ganhado mais clareza e dividimos as responsabilidades da seguinte forma:
+- **Rodrigo Pedro:** responsável pela parte dos documentos como por exemplo a análise exploratória, a interpretação dos resultados a escrita da documentação em `docs/` e a atualização do `README.md`.
+- **Tiago Rodrigues:** responsável pela parte do código como a importação do dataset no kaggle, a limpeza dos dados, o tratamento dos valores em falta, a criação de variáveis temporais e a organização do repositório.
 
 ### Ferramentas de Colaboração
-- **GitHub** para controlo de versões e organização do portefólio
-- **Kaggle** para desenvolvimento e execução dos notebooks
-- **Discord** e/ou **WhatsApp** para comunicação e reuniões curtas
+- **GitHub** para guardar e partilhar o trabalho de uma forma mais organizada
+- **Kaggle** para desenvolver e correr os notebooks
+- **Discord** e **WhatsApp** para comunicar e combinar o que cada um ia fazendo
 
 ### Ferramentas e Bibliotecas Python
 - `pandas`
@@ -43,15 +41,15 @@ Uma vez que o dataset não apresenta um índice global único de “qualidade do
 
 ## 4. Análise de Viabilidade dos Dados
 
-**Disponibilidade:** O conjunto de dados foi obtido em dois formatos, `AirQualityUCI.csv` e `AirQualityUCI.xlsx`, tendo sido importado para um notebook no Kaggle. O ficheiro CSV exige leitura com `sep=';'` e `decimal=','`, devido ao seu formato original.
+**Disponibilidade:** O dataset foi obtido em formato `csv` e `xlsx` e importado para um notebook no Kaggle. O ficheiro CSV tem uma formatação específica que exige `sep=';'` e `decimal=','` na leitura, foi algo que descobrimos ao tentar abrir o ficheiro pela primeira vez.
 
-**Qualidade Inicial:** Foram executados os comandos `df.head()`, `df.info()` e `df.describe()` para inspeção inicial. Verificou-se que o conjunto de dados original contém **9471 linhas e 17 colunas**, incluindo **duas colunas finais vazias**, que deverão ser removidas. Assim, o dataset apresenta **15 colunas úteis** para análise inicial. Foram ainda identificados os seguintes aspetos:
-- existem valores em falta codificados como **`-200`**, que não surgem inicialmente como `NaN` e terão de ser convertidos;
-- as colunas `Date` e `Time` devem ser combinadas numa variável temporal (`timestamp`) para permitir análise cronológica;
-- a variável `NMHC(GT)` apresenta uma percentagem muito elevada de valores em falta, o que poderá justificar a sua exclusão ou tratamento específico em fases posteriores;
-- poderão existir outliers e inconsistências que terão de ser analisados durante a Milestone 2.
+**Qualidade Inicial:** Ao analisar o dataset com `df.head()`, `df.info()` e `df.describe()` verificámos tem **9471 linhas e 17 colunas**, mas duas dessas colunas estavam completamente vazias e este ponto foi das primeiras coisas que notámos e que nos pareceu estranho. Para além disso, identificámos os seguintes aspetos a tratar:
+- os valores em falta estão codificados como **`-200`** e não aparecem automaticamente como`NaN`;
+- as colunas `Date` e `Time` precisam de ser combinadas numa variável temporal;
+- a variável `NMHC(GT)` tem uma percentagem muito elevada em valores em falta;
+- poderão existir outliers que precisam de ser analisados durante a Milestone 2.
 
-**Ética:** O conjunto de dados é constituído por medições ambientais e não inclui dados pessoais nem identificáveis. Assim, o risco de incumprimento do **RGPD** é reduzido. A utilização do dataset será exclusivamente académica, com documentação transparente das transformações, limitações e decisões tomadas.
+**Ética:** O conjunto de dados é composto apenas por medições ambientais, sem qualquer dado pessoal. Não há problemas de privacidade nem risco de incumprimento do RGPD. A utilização é exclusivamente académica.
 
 ## 5. Cronograma Interno
 
@@ -64,4 +62,4 @@ Uma vez que o dataset não apresenta um índice global único de “qualidade do
 
 ---
 
-*Data de última atualização: 06/03/2026*
+*Data de última atualização: 06/05/2026*
