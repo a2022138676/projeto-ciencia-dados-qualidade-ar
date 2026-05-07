@@ -130,7 +130,7 @@ Na fase de seleção de atributos, as variáveis **`PT08.S2(NMHC)`** e **`sensor
 | `is_warm_season` | Binária | Indicador de estação quente |
 
 Foram removidas:
-- colunas vazias  
+-  colunas vazias  
 - `NMHC(GT)` — percentagem excessiva de valores em falta  
 - `Date`, `Time`, `timestamp` — substituídas por variáveis temporais derivadas  
 - `PT08.S2(NMHC)` — correlação absoluta > 0.90 com `C6H6(GT)` (multicolinearidade)  
