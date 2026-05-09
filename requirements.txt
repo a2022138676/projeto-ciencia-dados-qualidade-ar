@@ -1,3 +1,5 @@
+# Bibliotecas utilizadas no projeto de previsão da qualidade do ar
+
 pandas
 # manipulação e transformação de dados tabulares
 
@@ -12,6 +14,9 @@ seaborn
 
 scikit-learn
 # preprocessing, escalonamento, modelação e avaliação
+
+joblib
+# guardar e carregar o modelo final treinado
 
 jupyter
 # execução de notebooks em ambiente local, quando aplicável
