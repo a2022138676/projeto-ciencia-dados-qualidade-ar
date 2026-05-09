@@ -120,9 +120,9 @@ As cinco variáveis com maior importância foram:
 2. `PT08.S1(CO)`
 3. `NOx`
 4. `NO2(GT)`
-5. `PT08.S2(NMHC)`
+5. `hour`
 
-Variáveis como `hour` e `PT08.S3(NOx)` também contribuíram, embora com menor peso, confirmando que a estrutura temporal dos dados também tem alguma influência nas previsões. 
+Variáveis como `month_12` e `PT08.S3(NOx)` também contribuíram, embora com menor peso, confirmando que a estrutura temporal dos dados também tem alguma influência nas previsões. 
 
 ---
 
