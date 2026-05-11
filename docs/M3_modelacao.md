@@ -54,9 +54,9 @@ Testámos três algoritmos diferentes:
 
 | Algoritmo | Parâmetros Base | Métrica (Treino) | Métrica (Teste) | Notas |
 | :--- | :--- | :--- | :--- | :--- |
-| Regressão Linear | `default` | RMSE = 0.4968 | RMSE = 0.7649 | Indícios de underfitting |
-| Random Forest | `n_estimators=100` | RMSE = 0.1345 | RMSE = 0.5387 | Overfitting |
-| Gradient Boosting | `default` | RMSE = 0.3366 | RMSE = 0.5071 | Melhor equilíbrio |
+| Regressão Linear | `default` | RMSE = 0.4968 | RMSE = 0.7805 | Indícios de underfitting |
+| Random Forest | `n_estimators=100` | RMSE = 0.1345 | RMSE = 0.5472 | Overfitting |
+| Gradient Boosting | `default` | RMSE = 0.3366 | RMSE = 0.5183 | Melhor equilíbrio |
 
 O **Random Forest** surpreendeu-nos logo com um erro muito baixo no treino, pensávamos que ia ter um erro maior. No início não percebemos muito bem o porquê daquele resultado, mas depois de alguma pesquisa percebemos que se tratava de **overfitting**, este modelo tinha praticamente "decorado" os dados de treino mas não conseguia generalizar para dados novos, daí o erro ser bem maior no teste.
 
@@ -92,9 +92,9 @@ Testámos combinações dos seguintes parâmetros:
 * **Melhoria obtida no conjunto de teste:**  
 Comparando o modelo base com o modelo otimizado, observou-se a seguinte evolução no conjunto de teste:
 
-- RMSE: de **0.5071** para **0.4879**
-- MAE: de **0.3438** para **0.3276**
-- R²: de **0.8578** para **0.8683**
+- RMSE: de **0.5183** para **0.4879**
+- MAE: de **0.3510** para **0.3276**
+- R²: de **0.8514** para **0.8683**
 
 A melhoria não foi muito acentuada mas foi consistente nas três métricas, o que reforçou a nossa confiança na escolha do modelo.
 
