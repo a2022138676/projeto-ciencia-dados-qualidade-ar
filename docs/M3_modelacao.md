@@ -136,7 +136,7 @@ O modelo final escolhido foi o **Gradient Boosting otimizado** , com base em tr�
 - **Estabilidade:** melhor equilíbrio entre treino e teste, sem os problemas de overfitting do Random Forest;
 - **Interpretabilidade:** permite analisar os erros, os resíduos e a importância das variáveis, o que nos dá mais confiança nos resultados
 
-Em comparação com o baseline, o modelo final reduziu o RMSE em **64.1**% (de 1.3576 para 0.4806) e o MAE em **69.8**% (de 1.0831 para 0.3210), superando amplamente o objetivo SMART de 15% definido no início do projeto.
+Em comparação com o baseline, o modelo final reduziu o RMSE em **64.1**% (de 1.3576 para 0.4879) e o MAE em **69.8**% (de 1.0831 para 0.3276), superando amplamente o objetivo SMART de 15% definido no início do projeto.
 Ficaram algumas limitações, nomeadamente na previsão de valores extremos de CO, mas no geral consideramos que o modelo está sólido e pronto para ser apresentado como solução final desta fase.
 
 ---
