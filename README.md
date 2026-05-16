@@ -73,11 +73,11 @@ Desenvolver um modelo de regressão capaz de prever a concentração horária de
 
 ### Limpeza e Preparação
 
-O ficheiro original tinha alguns problemas que foi preciso resolver antes de avançar para a modelação. Os valores em falta não estavam identificados como tal — estavam codificados como `-200`, o que obrigou a uma conversão manual antes de qualquer análise. Havia também duas colunas completamente vazias e uma variável (`NMHC(GT)`) com quase 90% de dados em falta, que foi removida por não ter informação suficiente para ser útil.
+O ficheiro original tinha alguns problemas que foi preciso resolver antes de avançar para a modelação. Os valores em falta não estavam identificados como tal, estavam codificados como `-200`, o que obrigou a uma conversão manual antes de qualquer análise. Havia também duas colunas completamente vazias e uma variável (`NMHC(GT)`) com quase 90% de dados em falta, que foi removida por não ter informação suficiente para ser útil.
 
-Para a variável que queremos prever (`CO(GT)`), optámos por eliminar as linhas onde não havia medição, porque não faria sentido tentar adivinhar o valor que o próprio modelo vai aprender a prever. Nas restantes variáveis, os valores em falta foram preenchidos com a mediana — um valor central mais robusto do que a média quando existem valores extremos.
+Para a variável que queremos prever (`CO(GT)`), optámos por eliminar as linhas onde não havia medição, porque não faria sentido tentar adivinhar o valor que o próprio modelo vai aprender a prever. Nas restantes variáveis, os valores em falta foram preenchidos com a mediana, um valor central mais robusto do que a média quando existem valores extremos.
 
-Foram ainda criadas novas variáveis a partir da data e hora de cada registo — como a hora do dia, o dia da semana e o mês — porque a concentração de CO varia ao longo do tempo e os modelos precisam dessa informação para aprender esses padrões. Por fim, foram removidas algumas variáveis que tinham informação demasiado parecida com outras, para não confundir os modelos.
+Foram ainda criadas novas variáveis a partir da data e hora de cada registo, como a hora do dia, o dia da semana e o mês, porque a concentração de CO varia ao longo do tempo e os modelos precisam dessa informação para aprender esses padrões. Por fim, foram removidas algumas variáveis que tinham informação demasiado parecida com outras, para não confundir os modelos.
 
 ### Principais Conclusões da Análise Exploratória
 
