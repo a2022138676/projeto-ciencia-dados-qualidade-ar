@@ -114,13 +114,15 @@ Gerámos também curvas de aprendizagem para o Gradient Boosting. Mostraram que 
 
 <p align="center"><img src="../reports/figures/learning_curve_gradient_boosting.png" width="600"/></p>
 
+Por fim, o gráfico de resíduos mostrou que a maioria dos erros está concentrada próxima de zero, sem padrão sistemático evidente, o que reforça a ideia de que o modelo está bem ajustado nos valores mais comuns. No entanto, nos valores previstos mais altos os resíduos tornam-se mais dispersos, confirmando a perda de precisão nos extremos.
+
+<p align="center"><img src="../reports/figures/residual_plot_gradient_boosting.png" width="600"/></p>
+
 ### 4.2. Importância dos Atributos (Feature Importance)
 
 Analisámos quais as variáveis que mais contribuíram para as previsões do modelo. Os resultados foram coerentes com o que já tínhamos visto na análise exploratória, os sensores químicos e os poluentes são os mais importantes.
 
 <p align="center"><img src="../reports/figures/feature_importance_gradient_boosting.png" width="600"/></p>
-
-<p align="center"><img src="../reports/figures/residual_plot_gradient_boosting.png" width="600"/></p>
 
 As cinco variáveis com maior importância foram:
 
