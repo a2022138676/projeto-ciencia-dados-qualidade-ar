@@ -39,7 +39,7 @@ Após a substituição dos valores `-200` por `NaN` e antes de qualquer imputaç
 
 > Variável-alvo do projeto.
 
-O que mais nos chamou a atenção nesta análise foi perceber o quanto as escalas das variáveis de sensores são diferentes entre si — o `PT08.S1(CO)` vai de 647 a 2040 enquanto a `AH` vai de 0.19 a 2.23. À primeira vista não tínhamos bem a noção de que isso ia ser um problema, mas depois de ver a tabela percebemos logo que era necessário normalizar antes de avançar para os modelos. O `NOx(GT)` também nos surpreendeu: o desvio padrão é quase igual à média, o que indica que há momentos de poluição muito intensa misturados com períodos muito mais calmos — algo que nos pareceu importante ter em conta.
+O que mais nos chamou a atenção nesta análise foi perceber o quanto as escalas das variáveis de sensores são diferentes entre si, o `PT08.S1(CO)` vai de 647 a 2040 enquanto a `AH` vai de 0.19 a 2.23. À primeira vista não tínhamos bem a noção de que isso ia ser um problema, mas depois de ver a tabela percebemos logo que era necessário normalizar antes de avançar para os modelos. O `NOx(GT)` também nos surpreendeu visto que o desvio padrão é quase igual à média, o que indica que há momentos de poluição muito intensa misturados com períodos muito mais calmos, algo que nos pareceu importante ter em conta.
 
 ---
 
@@ -72,15 +72,15 @@ Foram também identificadas correlações muito elevadas entre variáveis predit
 
 Estas correlações foram consideradas na fase de seleção de atributos (secção 3.2).
 
-O que mais nos surpreendeu nesta análise foi a correlação negativa do `PT08.S3(NOx)` com o CO — nunca tínhamos pensado nisso mas depois de pesquisar percebemos que faz sentido do ponto de vista da química atmosférica. Também ficámos satisfeitos ao ver as correlações altas dos sensores químicos com a variável-alvo, porque nos deu logo uma indicação de que o modelo ia ter informação suficiente para aprender. Por outro lado, as variáveis meteorológicas terem correlações tão baixas foi algo que nos surpreendeu um pouco — intuitivamente esperávamos que a temperatura ou a humidade tivessem mais influência direta.
+O que mais nos surpreendeu nesta análise foi a correlação negativa do `PT08.S3(NOx)` com o CO, nunca tínhamos pensado nisso mas depois de pesquisar percebemos que faz sentido do ponto de vista da química atmosférica. Também ficámos satisfeitos ao ver as correlações altas dos sensores químicos com a variável-alvo, porque nos deu logo uma indicação de que o modelo ia ter informação suficiente para aprender. Por outro lado, as variáveis meteorológicas terem correlações tão baixas foi algo que nos surpreendeu um pouco, intuitivamente esperávamos que a temperatura ou a humidade tivessem mais influência direta.
 
 ---
 
 ## 2. Qualidade dos Dados e Limpeza
 
-Esta foi a fase que demorou mais tempo em todo o projeto, mas também aquela que nos deu a perceber mais sobre os dados. Existiam muitas decisões a tomar que podiam definir o rumo do trabalho — não podíamos fazê-las sem perceber realmente o porquê de cada uma, porque cada decisão poderia ter impacto no resultado final.
+Esta foi a fase que demorou mais tempo em todo o projeto, mas também aquela que nos deu a perceber mais sobre os dados. Existiam muitas decisões a tomar que podiam definir o rumo do trabalho, não podíamos fazê-las sem perceber realmente o porquê de cada uma, porque cada decisão poderia ter impacto no resultado final.
 
-Na fase de iniciação (M1), já tínhamos identificado antecipadamente alguns problemas de qualidade — nomeadamente o código `-200` para valores em falta, as colunas vazias e a elevada percentagem de nulos em `NMHC(GT)`. A M2 confirmou e quantificou esses problemas.
+Na fase de iniciação (M1), já tínhamos identificado antecipadamente alguns problemas de qualidade, nomeadamente o código `-200` para valores em falta, as colunas vazias e a elevada percentagem de nulos em `NMHC(GT)`. A M2 confirmou e quantificou esses problemas.
 
 ### 2.1. Diagnóstico de Qualidade — Evolução do Dataset
 
@@ -109,7 +109,7 @@ Verificámos se existiam linhas completamente duplicadas no dataset, porque era 
 
 ### 2.4. Outliers e Inconsistências
 
-Para identificar os outliers, foi utilizado o método do intervalo interquartil (IQR). Nas variáveis preditoras, foi aplicado clipping para limitar os valores ao intervalo `[Q1 − 1.5×IQR, Q3 + 1.5×IQR]`. A variável-alvo `CO(GT)` foi mantida sem alterações — os valores extremos de CO podem corresponder a episódios reais de poluição elevada e não devem ser removidos.
+Para identificar os outliers, foi utilizado o método do intervalo interquartil (IQR). Nas variáveis preditoras, foi aplicado clipping para limitar os valores ao intervalo `[Q1 − 1.5×IQR, Q3 + 1.5×IQR]`. A variável-alvo `CO(GT)` foi mantida sem alterações, os valores extremos de CO podem corresponder a episódios reais de poluição elevada e não devem ser removidos.
 
 *(Figura 3 — Análise de outliers por variável preditora, reports/figures/)*
 
@@ -125,7 +125,7 @@ Para identificar os outliers, foi utilizado o método do intervalo interquartil 
 | Registos duplicados | Nenhum encontrado |
 | Clipping de outliers (IQR) | Aplicado às variáveis preditoras |
 
-No final desta etapa ficámos bastante satisfeitos porque conseguimos resolver todos os problemas que tínhamos identificado na M1. O dataset ficou sem valores em falta, sem duplicados e com os outliers das variáveis preditoras controlados. A decisão de não tocar na variável-alvo foi consciente — alterar o `CO(GT)` estaria a mudar aquilo que queremos prever, o que não faria sentido nenhum.
+No final desta etapa ficámos bastante satisfeitos porque conseguimos resolver todos os problemas que tínhamos identificado na M1. O dataset ficou sem valores em falta, sem duplicados e com os outliers das variáveis preditoras controlados. A decisão de não tocar na variável-alvo foi consciente, alterar o `CO(GT)` estaria a mudar aquilo que queremos prever, o que não faria sentido nenhum.
 
 ---
 
@@ -157,7 +157,7 @@ Na fase de seleção de atributos, `PT08.S2(NMHC)` e `sensor_mean` foram removid
 
 *(Figura 4 — Impacto das novas variáveis temporais nas concentrações de CO, reports/figures/)*
 
-Criar estas variáveis foi das partes que mais gostámos nesta fase porque sentimos que estávamos mesmo a acrescentar algo ao dataset e não apenas a limpar. Percebemos que havia padrões temporais que os modelos não conseguiriam captar sem esta informação, como o facto de a poluição ser diferente às 7h da manhã e às 14h. A parte da seleção foi mais difícil porque tivemos de perceber o conceito de multicolinearidade e o que é que isso causaria nos modelos — mas depois de pesquisar ficou mais claro.
+Criar estas variáveis foi das partes que mais gostámos nesta fase porque sentimos que estávamos mesmo a acrescentar algo ao dataset e não apenas a limpar. Percebemos que havia padrões temporais que os modelos não conseguiriam captar sem esta informação, como o facto de a poluição ser diferente às 7h da manhã e às 14h. A parte da seleção foi mais difícil porque tivemos de perceber o conceito de multicolinearidade e o que é que isso causaria nos modelos, mas depois de pesquisar ficou mais claro.
 
 ---
 
@@ -217,4 +217,4 @@ No final desta fase, o dataset estava limpo, organizado e pronto para a fase de 
 
 ---
 
-*Data de última atualização: 15/05/2026*
+*Data de última atualização: 16/05/2026*
