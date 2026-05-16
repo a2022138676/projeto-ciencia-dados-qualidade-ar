@@ -6,7 +6,7 @@ Esta pasta contém os dados originais do projeto.
 
 ## Fonte dos Dados
 
-Dataset: **Air Quality Dataset (UCI)**
+Dataset: Air Quality Dataset (UCI)
 
 Origem:
 Kaggle → https://www.kaggle.com/datasets/jhonan/airqualityuci
