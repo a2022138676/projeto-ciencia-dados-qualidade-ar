@@ -149,4 +149,4 @@ Ficaram algumas limitações, nomeadamente na previsão de valores extremos de C
 
 ---
 
-*Data de última atualização: 07/05/2026*
+*Data de última atualização: 16/05/2026*
