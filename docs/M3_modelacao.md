@@ -8,7 +8,7 @@ Nesta fase o objetivo era construir e comparar modelos capazes de prever a conce
 Dividimos os dados em 80% para treino e 20% para teste.  
 Como o dataset tem uma componente temporal, são medições horárias ao longo do tempo, fizemos a divisão de forma cronológica, ou seja, o modelo é treinado com os dados mais antigos e testado com os mais recentes. Achámos que fazia mais sentido do que uma divisão aleatória, porque é assim que funcionaria na realidade.
 
-Para além disso, usámos validação cruzada com `TimeSeriesSplit`, o que nos permitiu testar o modelo em diferentes períodos temporais e ter mais confiança nos resultados, em vez de depender de uma única divisão que poderia ser favorável por acaso.
+Para além disso, usámos validação cruzada com `TimeSeriesSplit`, o que nos permitiu testar o modelo em diferentes períodos temporais e ter mais confiança nos resultados — em vez de depender de uma única divisão que poderia ser favorável por acaso.
 
 Definimos também um pipeline de pré-processamento para garantir que as transformações eram sempre feitas da mesma forma e apenas com base nos dados de treino. Esse pipeline inclui:
 
@@ -108,19 +108,19 @@ Como se trata de um problema de regressão, não existe matriz de confusão, em 
 
 O gráfico de valores reais versus previstos confirmou que o modelo segue bem a tendência geral, mas perde alguma precisão nos valores mais altos.
 
-![Valores Reais vs Previstos — Gradient Boosting](../reports/figures/real_vs_pred_gradient_boosting.png)
+<img src="../reports/figures/real_vs_pred_gradient_boosting.png" width="600"/>
 
 Gerámos também curvas de aprendizagem para o Gradient Boosting. Mostraram que o erro de treino fica sempre abaixo do erro de validação, sem convergirem de forma clara, o que sugere que o modelo ainda poderia beneficiar de mais dados ou de ajustes adicionais.
 
-![Curva de Aprendizagem — Gradient Boosting](../reports/figures/learning_curve_gradient_boosting.png)
+<img src="../reports/figures/learning_curve_gradient_boosting.png" width="600"/>
 
 ### 4.2. Importância dos Atributos (Feature Importance)
 
 Analisámos quais as variáveis que mais contribuíram para as previsões do modelo. Os resultados foram coerentes com o que já tínhamos visto na análise exploratória, os sensores químicos e os poluentes são os mais importantes.
 
-![Importância dos Atributos — Gradient Boosting](../reports/figures/feature_importance_gradient_boosting.png)
+<img src="../reports/figures/feature_importance_gradient_boosting.png" width="600"/>
 
-![Gráfico de Resíduos — Gradient Boosting](../reports/figures/residual_plot_gradient_boosting.png)
+<img src="../reports/figures/residual_plot_gradient_boosting.png" width="600"/>
 
 As cinco variáveis com maior importância foram:
 
@@ -149,4 +149,4 @@ Ficaram algumas limitações, nomeadamente na previsão de valores extremos de C
 
 ---
 
-*Data de última atualização: 16/05/2026*
+*Data de última atualização: 07/05/2026*
