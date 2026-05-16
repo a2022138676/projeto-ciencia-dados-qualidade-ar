@@ -47,7 +47,7 @@ O que mais nos chamou a atenção nesta análise foi perceber o quanto as escala
 
 Para perceber quais as variáveis com maior relação linear com `CO(GT)`, foi gerada uma matriz de correlação de Pearson e gráficos de dispersão entre a variável-alvo e as restantes variáveis.
 
-![Matriz de correlação das variáveis numéricas](../reports/Heatmap.png)
+![Matriz de correlação das variáveis numéricas](../reports/figures/Heatmap.png)
 
 #### Correlações com `CO(GT)` (coeficiente de Pearson r)
 
@@ -93,7 +93,7 @@ Na fase de iniciação (M1), já tínhamos identificado antecipadamente alguns p
 | Após remoção de linhas com `CO(GT)` = NaN | ~8991 | 14 | Sem imputação da variável-alvo |
 | Dataset final (após toda a limpeza) | ~8991 | 14 | Sem valores em falta |
 
-![Percentagem de Valores em Falta por Coluna](../reports/missing_values.png)
+![Percentagem de Valores em Falta por Coluna](../reports/figures/missing_values.png)
 
 ### 2.2. Tratamento de Valores em Falta
 
@@ -115,7 +115,7 @@ Para identificar os outliers, foi utilizado o método do intervalo interquartil 
 
 
 
-![Percentagem de Outliers por Variável](../reports/outliers.png)
+![Percentagem de Outliers por Variável](../reports/figures/outliers.png)
 
 ### 2.5. Sumário da Limpeza
 
