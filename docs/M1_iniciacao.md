@@ -55,7 +55,7 @@ Usámos o GitHub para guardar e partilhar o trabalho de forma organizada, o Kagg
 
 ### Disponibilidade
 
-O dataset foi obtido em formato `csv` e `xlsx` e importado para um notebook no Kaggle. O ficheiro CSV tem uma formatação específica que exige `sep=';'` e `decimal=','` na leitura — algo que descobrimos ao tentar abrir o ficheiro pela primeira vez e que gerou os primeiros erros.
+O dataset foi obtido em formato `csv` e `xlsx` e importado para um notebook no Kaggle. O ficheiro CSV tem uma formatação específica que exige `sep=';'` e `decimal=','` na leitura, algo que descobrimos ao tentar abrir o ficheiro pela primeira vez e que gerou os primeiros erros.
 
 ### Qualidade Inicial
 
@@ -76,7 +76,7 @@ O dataset é composto exclusivamente por medições ambientais de equipamentos a
 
 ## 7. Dicionário de Variáveis Original
 
-Quando abrimos o dataset pela primeira vez, uma das primeiras coisas que fizemos foi tentar perceber o que significava cada coluna — algumas eram óbvias como `T` para temperatura, mas outras como `PT08.S1(CO)` ou `C6H6(GT)` não nos diziam nada à primeira vista. Depois de pesquisar, percebemos que existem dois tipos de variáveis bem distintos: as colunas `(GT)` são medições de referência feitas por equipamentos certificados, e as colunas `PT08.*` são sensores de baixo custo que medem a resistência de um material sensível a determinado poluente — ou seja, não medem diretamente em unidades físicas. O dataset tem originalmente 17 colunas, das quais 2 estavam completamente vazias.
+Quando abrimos o dataset pela primeira vez, uma das primeiras coisas que fizemos foi tentar perceber o que significava cada coluna — algumas eram óbvias como `T` para temperatura, mas outras como `PT08.S1(CO)` ou `C6H6(GT)` não nos diziam nada à primeira vista. Depois de pesquisar, percebemos que existem dois tipos de variáveis bem distintos: as colunas `(GT)` são medições de referência feitas por equipamentos certificados, e as colunas `PT08.*` são sensores de baixo custo que medem a resistência de um material sensível a determinado poluente, ou seja, não medem diretamente em unidades físicas. O dataset tem originalmente 17 colunas, das quais 2 estavam completamente vazias.
 
 ### Variáveis Temporais
 
@@ -144,4 +144,4 @@ Quando abrimos o dataset pela primeira vez, uma das primeiras coisas que fizemos
 
 ---
 
-*Data de última atualização: 15/05/2026*
+*Data de última atualização: 16/05/2026*
