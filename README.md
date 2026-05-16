@@ -28,9 +28,9 @@ projeto-ciencia-dados-qualidade-ar/
 │   ├── M3_modelacao.md
 │   └── M4_conclusoes.md
 ├── notebooks/                        ← Versões exportadas do Kaggle
-│   ├── 1_0_eda_limpeza.ipynb        
-│   ├── 2_0_modelacao_treino.ipynb    
-│   └── 3_0_interpretacao.ipynb       
+│   ├── 1_0_eda_limpeza.ipynb         ← Corresponde à Fase 2
+│   ├── 2_0_modelacao_treino.ipynb    ← Corresponde à Fase 3
+│   └── 3_0_interpretacao.ipynb       ← Corresponde à Fase 4
 ├── reports/
 │   └── figures/                      ← Figuras geradas nos notebooks
 ├── src/                              ← Reservado para módulos auxiliares
@@ -73,11 +73,11 @@ Desenvolver um modelo de regressão capaz de prever a concentração horária de
 
 ### Limpeza e Preparação
 
-O ficheiro original tinha alguns problemas que foi preciso resolver antes de avançar para a modelação. Os valores em falta não estavam identificados como tal, estavam codificados como `-200`, o que obrigou a uma conversão manual antes de qualquer análise. Havia também duas colunas completamente vazias e uma variável (`NMHC(GT)`) com quase 90% de dados em falta, que foi removida por não ter informação suficiente para ser útil.
+O ficheiro original tinha alguns problemas que foi preciso resolver antes de avançar para a modelação. Os valores em falta não estavam identificados como tal — estavam codificados como `-200`, o que obrigou a uma conversão manual antes de qualquer análise. Havia também duas colunas completamente vazias e uma variável (`NMHC(GT)`) com quase 90% de dados em falta, que foi removida por não ter informação suficiente para ser útil.
 
-Para a variável que queremos prever (`CO(GT)`), optámos por eliminar as linhas onde não havia medição, porque não faria sentido tentar adivinhar o valor que o próprio modelo vai aprender a prever. Nas restantes variáveis, os valores em falta foram preenchidos com a mediana, um valor central mais robusto do que a média quando existem valores extremos.
+Para a variável que queremos prever (`CO(GT)`), optámos por eliminar as linhas onde não havia medição, porque não faria sentido tentar adivinhar o valor que o próprio modelo vai aprender a prever. Nas restantes variáveis, os valores em falta foram preenchidos com a mediana — um valor central mais robusto do que a média quando existem valores extremos.
 
-Foram ainda criadas novas variáveis a partir da data e hora de cada registo, como a hora do dia, o dia da semana e o mês, porque a concentração de CO varia ao longo do tempo e os modelos precisam dessa informação para aprender esses padrões. Por fim, foram removidas algumas variáveis que tinham informação demasiado parecida com outras, para não confundir os modelos.
+Foram ainda criadas novas variáveis a partir da data e hora de cada registo — como a hora do dia, o dia da semana e o mês — porque a concentração de CO varia ao longo do tempo e os modelos precisam dessa informação para aprender esses padrões. Por fim, foram removidas algumas variáveis que tinham informação demasiado parecida com outras, para não confundir os modelos.
 
 ### Principais Conclusões da Análise Exploratória
 
@@ -107,11 +107,11 @@ Foram ainda criadas novas variáveis a partir da data e hora de cada registo, co
 | Regressão Linear | 0.7805 | 0.6354 | 0.6630 |
 | Random Forest | 0.5472 | 0.3577 | 0.8343 |
 | Gradient Boosting (base) | 0.5183 | 0.3510 | 0.8514 |
-| Gradient Boosting (otimizado) | 0.4806 | 0.3210 | 0.8722 |
+| Gradient Boosting (otimizado) | 0.4879 | 0.3276 | 0.8683 |
 
 ### Modelo Final
 
-O modelo selecionado foi o Gradient Boosting otimizado, com os hiperparâmetros `n_estimators=100`, `learning_rate=0.05` e `max_depth=3`, obtidos por GridSearchCV com TimeSeriesSplit. O RMSE reduziu 64.6% face ao baseline, superando amplamente o objetivo definido de 15%.
+O modelo selecionado foi o Gradient Boosting otimizado, com os hiperparâmetros `n_estimators=100`, `learning_rate=0.05` e `max_depth=3`, obtidos por GridSearchCV com TimeSeriesSplit. O RMSE reduziu 64.1% face ao baseline, superando amplamente o objetivo definido de 15%.
 
 ### Principais Conclusões da Modelação
 
@@ -128,7 +128,7 @@ O modelo selecionado foi o Gradient Boosting otimizado, com os hiperparâmetros 
 
 ### Resposta ao Problema
 
-Os resultados obtidos demonstram que é possível prever a concentração de monóxido de carbono com boa precisão a partir de leituras de sensores e variáveis ambientais disponíveis em tempo real. O modelo final obteve um R² de 0.8722 no conjunto de teste, explicando cerca de 87% da variância da variável-alvo.
+Os resultados obtidos demonstram que é possível prever a concentração de monóxido de carbono com boa precisão a partir de leituras de sensores e variáveis ambientais disponíveis em tempo real. O modelo final obteve um R² de 0.8683 no conjunto de teste, explicando cerca de 87% da variância da variável-alvo.
 
 ### Recomendações de Inovação
 
