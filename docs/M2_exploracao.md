@@ -47,7 +47,7 @@ O que mais nos chamou a atenção nesta análise foi perceber o quanto as escala
 
 Para perceber quais as variáveis com maior relação linear com `CO(GT)`, foi gerada uma matriz de correlação de Pearson e gráficos de dispersão entre a variável-alvo e as restantes variáveis.
 
-![Matriz de correlação das variáveis numéricas](../Heatmap.png)
+![Matriz de correlação das variáveis numéricas](../reports/Heatmap.png)
 
 #### Correlações com `CO(GT)` (coeficiente de Pearson r)
 
@@ -93,6 +93,8 @@ Na fase de iniciação (M1), já tínhamos identificado antecipadamente alguns p
 | Após remoção de linhas com `CO(GT)` = NaN | ~8991 | 14 | Sem imputação da variável-alvo |
 | Dataset final (após toda a limpeza) | ~8991 | 14 | Sem valores em falta |
 
+![Percentagem de Valores em Falta por Coluna](../reports/missing_values.png)
+
 ### 2.2. Tratamento de Valores em Falta
 
 | Variável | % de Nulos | Decisão Tomada |
@@ -112,6 +114,8 @@ Verificámos se existiam linhas completamente duplicadas no dataset, porque era 
 Para identificar os outliers, foi utilizado o método do intervalo interquartil (IQR). Nas variáveis preditoras, foi aplicado clipping para limitar os valores ao intervalo `[Q1 − 1.5×IQR, Q3 + 1.5×IQR]`. A variável-alvo `CO(GT)` foi mantida sem alterações — os valores extremos de CO podem corresponder a episódios reais de poluição elevada e não devem ser removidos.
 
 
+
+![Percentagem de Outliers por Variável](../reports/outliers.png)
 
 ### 2.5. Sumário da Limpeza
 
