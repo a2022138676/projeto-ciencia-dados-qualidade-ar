@@ -76,7 +76,7 @@ O dataset é composto exclusivamente por medições ambientais de equipamentos a
 
 ## 7. Dicionário de Variáveis Original
 
-Quando abrimos o dataset pela primeira vez, uma das primeiras coisas que fizemos foi tentar perceber o que significava cada coluna — algumas eram óbvias como `T` para temperatura, mas outras como `PT08.S1(CO)` ou `C6H6(GT)` não nos diziam nada à primeira vista. Depois de pesquisar, percebemos que existem dois tipos de variáveis bem distintos: as colunas `(GT)` são medições de referência feitas por equipamentos certificados, e as colunas `PT08.*` são sensores de baixo custo que medem a resistência de um material sensível a determinado poluente, ou seja, não medem diretamente em unidades físicas. O dataset tem originalmente 17 colunas, das quais 2 estavam completamente vazias.
+Quando abrimos o dataset pela primeira vez, uma das primeiras coisas que fizemos foi tentar perceber o que significava cada coluna, algumas eram óbvias como `T` para temperatura, mas outras como `PT08.S1(CO)` ou `C6H6(GT)` não nos diziam nada à primeira vista. Depois de pesquisar, percebemos que existem dois tipos de variáveis bem distintos: as colunas `(GT)` são medições de referência feitas por equipamentos certificados, e as colunas `PT08.*` são sensores de baixo custo que medem a resistência de um material sensível a determinado poluente, ou seja, não medem diretamente em unidades físicas. O dataset tem originalmente 17 colunas, das quais 2 estavam completamente vazias.
 
 ### Variáveis Temporais
 
