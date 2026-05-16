@@ -108,19 +108,19 @@ Como se trata de um problema de regressão, não existe matriz de confusão, em 
 
 O gráfico de valores reais versus previstos confirmou que o modelo segue bem a tendência geral, mas perde alguma precisão nos valores mais altos.
 
-<img src="../reports/figures/real_vs_pred_gradient_boosting.png" width="600"/>
+<p align="center"><img src="../reports/figures/real_vs_pred_gradient_boosting.png" width="600"/></p>
 
 Gerámos também curvas de aprendizagem para o Gradient Boosting. Mostraram que o erro de treino fica sempre abaixo do erro de validação, sem convergirem de forma clara, o que sugere que o modelo ainda poderia beneficiar de mais dados ou de ajustes adicionais.
 
-<img src="../reports/figures/learning_curve_gradient_boosting.png" width="600"/>
+<p align="center"><img src="../reports/figures/learning_curve_gradient_boosting.png" width="600"/></p>
 
 ### 4.2. Importância dos Atributos (Feature Importance)
 
 Analisámos quais as variáveis que mais contribuíram para as previsões do modelo. Os resultados foram coerentes com o que já tínhamos visto na análise exploratória, os sensores químicos e os poluentes são os mais importantes.
 
-<img src="../reports/figures/feature_importance_gradient_boosting.png" width="600"/>
+<p align="center"><img src="../reports/figures/feature_importance_gradient_boosting.png" width="600"/></p>
 
-<img src="../reports/figures/residual_plot_gradient_boosting.png" width="600"/>
+<p align="center"><img src="../reports/figures/residual_plot_gradient_boosting.png" width="600"/></p>
 
 As cinco variáveis com maior importância foram:
 
