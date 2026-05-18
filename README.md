@@ -39,6 +39,24 @@ projeto-ciencia-dados-qualidade-ar/
 ```
 
 ---
+## 📂 Navegação Rápida
+
+### Documentação
+
+- [Milestone 1 — Iniciação e Definição do Projeto](docs/M1_iniciacao.md)
+- [Milestone 2 — Análise Exploratória e Engenharia de Atributos](docs/M2_exploracao.md)
+- [Milestone 3 — Modelação e Avaliação](docs/M3_modelacao.md)
+- [Milestone 4 — Conclusões e Reflexão Final](docs/M4_conclusoes.md)
+
+### Notebooks
+
+- [EDA e Limpeza de Dados](notebooks/1_0_eda_limpeza.ipynb)
+- [Modelação e Treino](notebooks/2_0_modelacao_treino.ipynb)
+- [Interpretação e Avaliação Final](notebooks/3_0_interpretacao.ipynb)
+
+### Visualizações
+
+- [Gráficos e Figuras](reports/figures)
 
 ## 1. Iniciação (Milestone 1)
 
