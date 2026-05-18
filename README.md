@@ -200,7 +200,7 @@ jupyter notebook notebooks/3_0_interpretacao.ipynb       # Fase 4 — Interpreta
 
 > *(Adicionar aqui o link do vídeo depois de publicado)*
 
-[▶️ Ver Vídeo de Apresentação](LINK_DO_VIDEO)
+[▶️ Ver Vídeo de Apresentação](https://drive.google.com/file/d/1GxhNcUtGy08KMDvx6aB-u-cf0ZLe5Pjk/view?usp=drive_link)
 
 O vídeo resume todas as fases do projeto, desde a análise exploratória dos dados até à modelação, interpretação dos resultados e impacto prático da solução desenvolvida.
 
