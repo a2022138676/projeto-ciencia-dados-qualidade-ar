@@ -128,8 +128,9 @@ O modelo selecionado foi o Gradient Boosting otimizado, com os hiperparâmetros 
 
 ### Resposta ao Problema
 
-Os resultados obtidos demonstram que é possível prever a concentração de monóxido de carbono com boa precisão a partir de leituras de sensores e variáveis ambientais disponíveis em tempo real. O modelo final obteve um R² de 0.8683 no conjunto de teste, explicando cerca de 87% da variância da variável-alvo.
+### Resposta ao Problema
 
+Os resultados obtidos demonstram que é possível prever a concentração de monóxido de carbono com boa precisão a partir de leituras de sensores químicos e variáveis ambientais recolhidas em tempo real. O modelo final obteve um RMSE de 0.4879 e um R² de 0.8683 no conjunto de teste, superando significativamente o objetivo inicial definido para o projeto.
 ### Recomendações de Inovação
 
 1. Integrar o modelo num sistema de monitorização com alertas automáticos quando a previsão ultrapassar um limiar definido.
