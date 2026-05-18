@@ -16,6 +16,16 @@ A margem de erro média das previsões é de apenas 0.32 mg/m³, o que é um val
 
 Da análise dos erros que fizemos no notebook de interpretação, percebemos algo que nos pareceu muito importante: mais de 70% das previsões têm um erro inferior a 0.5 mg/m³. Isto é uma forma muito mais concreta de comunicar a fiabilidade do que falar só em RMSE.
 
+### Impacto Prático e Relevância do Projeto
+
+Ao longo deste projeto fomos percebendo que os dados ambientais conseguem revelar muito mais informação do que aparenta à primeira vista. Através da aplicação de técnicas de Ciência de Dados e Machine Learning, tornou-se possível transformar milhares de leituras de sensores em previsões úteis e interpretáveis sobre a qualidade do ar.
+
+Mais do que obter bons resultados estatísticos, o que consideramos mais relevante foi perceber que este tipo de solução pode ter utilidade prática em cenários reais. A capacidade de antecipar concentrações elevadas de poluentes pode ajudar entidades responsáveis pela monitorização ambiental a agir mais rapidamente, permitindo criar alertas preventivos, apoiar decisões relacionadas com mobilidade urbana ou reduzir riscos para populações mais vulneráveis.
+
+O projeto também demonstrou como modelos preditivos podem complementar sistemas tradicionais de monitorização da qualidade do ar, sobretudo quando se pretende reduzir custos ou aumentar a cobertura geográfica através de sensores mais acessíveis.
+
+Além da componente técnica, este trabalho ajudou-nos a compreender melhor a importância da interpretação dos resultados. Percebemos que um modelo não é apenas um conjunto de métricas, mas sim uma ferramenta que deve gerar conhecimento útil, apoiar decisões e produzir impacto positivo na sociedade.
+
 ### Valor para o Utilizador
 
 Com este tipo de solução, uma entidade responsável pela monitorização da qualidade do ar conseguia antecipar situações de poluição elevada antes destas serem confirmadas pelos analisadores de referência, que são equipamentos mais caros e mais lentos. Isto permitia ações de prevenção mais rápidas, como avisos à população sensível, ajustes em sistemas de tráfego ou ativação de medidas de mitigação ambiental.
