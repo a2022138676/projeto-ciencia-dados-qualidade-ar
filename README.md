@@ -41,6 +41,11 @@ projeto-ciencia-dados-qualidade-ar/
 ---
 ## 📂 Navegação Rápida
 
+### Dados
+
+- [Dados Originais](data/raw)
+- [Dados Processados](data/processed)
+
 ### Documentação
 
 - [Milestone 1 — Iniciação e Definição do Projeto](docs/M1_iniciacao.md)
@@ -54,9 +59,17 @@ projeto-ciencia-dados-qualidade-ar/
 - [Modelação e Treino](notebooks/2_0_modelacao_treino.ipynb)
 - [Interpretação e Avaliação Final](notebooks/3_0_interpretacao.ipynb)
 
-### Visualizações
+### Relatórios e Visualizações
 
-- [Gráficos e Figuras](reports/figures)
+- [Figuras e Gráficos](reports/figures)
+
+### Código
+
+- [Módulos Auxiliares](src)
+
+### Dependências
+
+- [requirements.txt](requirements.txt)
 
 ## 1. Iniciação (Milestone 1)
 
