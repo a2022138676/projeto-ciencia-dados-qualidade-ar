@@ -20,7 +20,7 @@ Definimos também um pipeline de pré-processamento para garantir que as transfo
 Todas estas transformações foram ajustadas exclusivamente com base no conjunto de treino e posteriormente aplicadas ao conjunto de teste, assegurando a integridade metodológica do processo e a correspondência entre o notebook `2.0_modelacao_treino.ipynb` e o presente relatório.
 
 * Métricas utilizadas:  
-Para avaliar os modelos usámos principalmente o RMSE (Root Mean Squared Error), porque penaliza mais os erros grandes e neste tipo de problema (poluição atmosférica), erros mais elevados podem corresponder a previsões incorretas em situações de maior concentração de poluição atmosférica. Assim, esta métrica mede melhor o sucesso do nosso objetivo definido inicialmente
+Para avaliar os modelos usámos principalmente o RMSE (Root Mean Squared Error), porque penaliza mais os erros grandes e neste tipo de problema (poluição atmosférica), erros mais elevados podem corresponder a previsões incorretas em situações de maior concentração de poluição atmosférica. Por essa razão, esta métrica foi considerada a mais adequada para avaliar o sucesso do objetivo definido inicialmente.
 
 Como métricas complementares usámos:
 
@@ -33,7 +33,7 @@ Como métricas complementares usámos:
 
 ### 2.1. Modelo Baseline
 
-O ponto de partida foi um modelo de referência muito simples, o `DummyRegressor`, que que prevê sempre o valor médio do CO, sem usar nenhuma informação das variáveis preditoras. Serviu para perceber qual o nível mínimo que qualquer modelo decente teria de superar.
+O ponto de partida foi um modelo de referência muito simples, o `DummyRegressor`, que prevê sempre o valor médio do CO, sem usar nenhuma informação das variáveis preditoras. Serviu para perceber qual o nível mínimo que qualquer modelo decente teria de superar.
 
 * Resultado:  
 - RMSE: 1.3576  
@@ -62,7 +62,7 @@ O Random Forest surpreendeu-nos logo com um erro muito baixo no treino, pensáva
 
 A Regressão Linear apresentou resultados mais modestos em ambos os conjuntos, o que sugere que a relação entre as variáveis e o CO não é puramente linear.
 
-O Gradient Boosting foi o que nos pareceu a melhor escolha, tinha o melhor equilíbrio entre o treino e o teste e os números diziam precisamente isso. Tivemos alguma dúvida inicial porque o Random Forest parecia melhor à primeira vista, mas depois de perceber o problema do overfitting ficou claro que a melhor escolha era o Gradient Boosting.
+O Gradient Boosting foi o que nos pareceu a melhor escolha, tinha o melhor equilíbrio entre o treino e o teste e os números diziam precisamente isso. Tivemos alguma dúvida inicial porque o Random Forest parecia mais promissor à primeira vista, mas depois de perceber o problema do overfitting ficou claro que a melhor escolha era o Gradient Boosting.
 
 ---
 
@@ -106,11 +106,11 @@ A melhoria não foi muito acentuada mas foi consistente nas três métricas, o q
 
 Como se trata de um problema de regressão, não existe matriz de confusão, em vez disso analisámos os resíduos (diferença entre os valores reais e os previstos).
 
-O gráfico de valores reais versus previstos confirmou que o modelo segue bem a tendência geral, mas perde alguma precisão nos valores mais altos.
+O gráfico de valores reais versus previstos confirmou que o modelo segue bem a tendência geral, embora perca alguma precisão nos valores mais elevados. Isto indica que o modelo consegue captar adequadamente o comportamento médio da concentração de CO ao longo do tempo.
 
 <p align="center"><img src="../reports/figures/real_vs_pred_gradient_boosting.png" width="600"/></p>
 
-Gerámos também curvas de aprendizagem para o Gradient Boosting. Mostraram que o erro de treino fica sempre abaixo do erro de validação, sem convergirem de forma clara, o que sugere que o modelo ainda poderia beneficiar de mais dados ou de ajustes adicionais.
+Gerámos também curvas de aprendizagem para o Gradient Boosting. Mostraram que o erro de treino fica sempre abaixo do erro de validação, sem convergirem de forma clara, o que sugere que o modelo poderá beneficiar de mais dados e de ajustes adicionais de hiperparâmetros.
 
 <p align="center"><img src="../reports/figures/learning_curve_gradient_boosting.png" width="600"/></p>
 
@@ -128,7 +128,7 @@ As cinco variáveis com maior importância foram:
 
 1. `C6H6(GT)`
 2. `PT08.S1(CO)`
-3. `NOx`
+3. `NOx(GT)`
 4. `NO2(GT)`
 5. `hour`
 
@@ -147,7 +147,7 @@ O modelo final escolhido foi o Gradient Boosting otimizado , com base em três r
 - Interpretabilidade: permite analisar os erros, os resíduos e a importância das variáveis, o que nos dá mais confiança nos resultados
 
 Em comparação com o baseline, o modelo final reduziu o RMSE em 64.1% (de 1.3576 para 0.4879) e o MAE em 69.8% (de 1.0831 para 0.3276), superando amplamente o objetivo SMART de 15% definido no início do projeto.
-Ficaram algumas limitações, nomeadamente na previsão de valores extremos de CO, mas no geral consideramos que o modelo está sólido e pronto para ser apresentado como solução final desta fase.
+Ficaram algumas limitações, nomeadamente na previsão de valores extremos de CO, mas no geral consideramos queo modelo apresentou resultados consistentes e desempenho suficientemente robusto para a fase final do projeto.
 
 ---
 
