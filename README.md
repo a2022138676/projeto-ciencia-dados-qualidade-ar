@@ -192,7 +192,32 @@ jupyter notebook notebooks/3_0_interpretacao.ipynb       # Fase 4 — Interpreta
 > O dataset original está disponível no [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/387/air+quality) e no [Kaggle](https://www.kaggle.com/datasets/jhonan/airqualityuci). Deve ser colocado em `data/raw/` antes de executar os notebooks.
 
 ---
+---
 
+## 🎥 Apresentação do Projeto
+
+### Vídeo de Apresentação
+
+> *(Adicionar aqui o link do vídeo depois de publicado)*
+
+[▶️ Ver Vídeo de Apresentação](LINK_DO_VIDEO)
+
+O vídeo resume todas as fases do projeto, desde a análise exploratória dos dados até à modelação, interpretação dos resultados e impacto prático da solução desenvolvida.
+
+---
+
+## ❓ Perguntas de Avaliação
+
+Durante o desenvolvimento do projeto preparámos também um conjunto de possíveis perguntas de avaliação relacionadas com:
+- divisão temporal dos dados,
+- tratamento de valores em falta,
+- overfitting,
+- limitações do modelo,
+- e interpretação dos resultados.
+
+📄 Documento completo: [`perguntas_avaliacao.md`](perguntas_avaliacao.md)
+
+---
 ## Referências
 
 - Vito, S. (2008). *Air Quality* [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5060Z
