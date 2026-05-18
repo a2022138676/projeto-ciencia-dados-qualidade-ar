@@ -30,7 +30,9 @@ Além da componente técnica, este trabalho ajudou-nos a compreender melhor a im
 
 Com este tipo de solução, uma entidade responsável pela monitorização da qualidade do ar conseguia antecipar situações de poluição elevada antes destas serem confirmadas pelos analisadores de referência, que são equipamentos mais caros e mais lentos. Isto permitia ações de prevenção mais rápidas, como avisos à população sensível, ajustes em sistemas de tráfego ou ativação de medidas de mitigação ambiental.
 
-Em zonas urbanas onde a saúde pública é uma preocupação real, esta capacidade de antecipação tem um valor prático evidente. Foi um dos pontos que nos fez perceber que o trabalho não era só uma exercício académico, podia mesmo ter aplicações reais.
+Em zonas urbanas onde a saúde pública é uma preocupação real, esta capacidade de antecipação tem um valor prático evidente. Foi um dos pontos que nos fez perceber que o trabalho não era só um exercício académico, podia mesmo ter aplicações reais.
+
+Para além da componente técnica, este projeto permitiu-nos perceber como a Ciência de Dados pode ser aplicada a problemas ambientais com impacto direto na sociedade. A possibilidade de transformar dados recolhidos por sensores em informação útil e interpretável demonstra o potencial destas soluções para apoiar decisões mais rápidas, melhorar sistemas de monitorização e contribuir para uma gestão urbana mais sustentável.
 
 ---
 
