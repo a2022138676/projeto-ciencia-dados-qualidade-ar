@@ -6,7 +6,7 @@
 
 Na Milestone 1 propusemo-nos a desenvolver um modelo de regressão que conseguisse prever a concentração horária de monóxido de carbono `CO(GT)` em ambiente urbano, com pelo menos 15% de melhoria no RMSE em relação a um modelo de referência simples. Quando começámos, este valor parecia-nos ambicioso porque não sabíamos bem o que esperar dos dados.
 
-No final, o modelo Gradient Boosting otimizado reduziu o RMSE em 64.6% face ao baseline, ou seja, mais de quatro vezes acima do objetivo inicial. Sinceramente não estávamos à espera de conseguir um resultado assim tão acima do que tínhamos definido, e isso foi uma das coisas que mais nos motivou no projeto.
+No final, o modelo Gradient Boosting otimizado reduziu o RMSE em 64.6% face ao baseline, ou seja, mais de quatro vezes acima do objetivo inicial. Os resultados obtidos superaram significativamente as expectativas definidas no início do projeto, sobretudo tendo em conta a incerteza inicial relativamente ao comportamento dos dados. Este foi um dos aspetos que mais nos motivou ao longo do desenvolvimento do trabalho.
 
 ### Interpretação dos Resultados
 
@@ -31,8 +31,6 @@ Além da componente técnica, este trabalho ajudou-nos a compreender melhor a im
 Com este tipo de solução, uma entidade responsável pela monitorização da qualidade do ar conseguia antecipar situações de poluição elevada antes destas serem confirmadas pelos analisadores de referência, que são equipamentos mais caros e mais lentos. Isto permitia ações de prevenção mais rápidas, como avisos à população sensível, ajustes em sistemas de tráfego ou ativação de medidas de mitigação ambiental.
 
 Em zonas urbanas onde a saúde pública é uma preocupação real, esta capacidade de antecipação tem um valor prático evidente. Foi um dos pontos que nos fez perceber que o trabalho não era só um exercício académico, podia mesmo ter aplicações reais.
-
-Para além da componente técnica, este projeto permitiu-nos perceber como a Ciência de Dados pode ser aplicada a problemas ambientais com impacto direto na sociedade. A possibilidade de transformar dados recolhidos por sensores em informação útil e interpretável demonstra o potencial destas soluções para apoiar decisões mais rápidas, melhorar sistemas de monitorização e contribuir para uma gestão urbana mais sustentável.
 
 ---
 
