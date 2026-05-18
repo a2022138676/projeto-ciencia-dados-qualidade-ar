@@ -198,9 +198,7 @@ jupyter notebook notebooks/3_0_interpretacao.ipynb       # Fase 4 — Interpreta
 
 ### Vídeo de Apresentação
 
-> *(Adicionar aqui o link do vídeo depois de publicado)*
-
-[▶️ Ver Vídeo de Apresentação](https://drive.google.com/file/d/1GxhNcUtGy08KMDvx6aB-u-cf0ZLe5Pjk/view?usp=drive_link)
+[▶️ Ver Vídeo de Apresentação](https://drive.google.com/file/d/1fb-bPVgaA755LMEJZvtuV_0fdATmgD2N/view?usp=drive_link)
 
 O vídeo resume todas as fases do projeto, desde a análise exploratória dos dados até à modelação, interpretação dos resultados e impacto prático da solução desenvolvida.
 
@@ -215,7 +213,7 @@ Durante o desenvolvimento do projeto preparámos também um conjunto de possíve
 - limitações do modelo,
 - e interpretação dos resultados.
 
-📄 Documento completo: [`perguntas_avaliacao.md`](perguntas_avaliacao.md)
+📄 Documento completo: [`perguntas_avaliacao.md`](https://drive.google.com/file/d/1etmWrGQrGuQX34R6w_FAtNbSkAUfs_JQ/view?usp=drive_link)
 
 ---
 ## Referências
